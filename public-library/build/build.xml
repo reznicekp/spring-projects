@@ -1,0 +1,8 @@
+<project name="public-library" default="translate-encoding" basedir="../">
+	<property name="locale.dir" value="${basedir}/src/main/resources/locale"/>
+	
+	<target name="translate-encoding">
+		<echo message="Native2Ascii: czech resources"/>
+		<native2ascii encoding="utf-8" src="${locale.dir}" dest="${locale.dir}" includes="locale_cz" ext=".properties"/>
+	</target>
+</project>

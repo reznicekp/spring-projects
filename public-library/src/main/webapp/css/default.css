@@ -1,0 +1,120 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: url('../images/handmadepaper.png');
+	color: #444;
+	font-family: 'Trebuchet MS', Arial;
+	margin: 0 auto;
+	width: 1000px;
+}
+
+#header #titles {
+	float: left;
+	width: 50%;
+}
+
+#header #links {
+	float: right;
+	margin-top: 30px;
+	text-align: right;
+	width: 40%;
+}
+
+h1 {
+	margin: 20px 0;
+}
+
+h2 {
+	margin-left: 30px;
+}
+
+#menu {
+	float: left;
+	line-height: 20px;
+	padding: 20px 0;
+	width: 25%;
+}
+
+#menu ul {
+	list-style-type: none;
+}
+
+#content {
+	float: right;
+	padding: 20px 0;
+	width: 73%;
+}
+
+p {
+	line-height: 30px;
+}
+
+#footer {
+	border-top: 1px solid #444;
+	clear: both;
+	font-size: 12px;
+	text-align: right;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 20px 0;
+	width: 100%;
+}
+
+table#credentials {
+	width: 400px;
+}
+
+table.list tr th {
+	background-color: #ddd;
+	border-bottom: 1px solid #444;
+}
+
+table.list tr + tr td {
+	border-top: 1px dotted #444;
+}
+
+table td.center {
+	text-align: center;
+}
+
+table.list tr.noBorder td {
+	border: none;
+}
+
+label {
+	display: inline-block;
+	margin: 5px 0;
+	width: 120px;
+}
+
+form#password label {
+	width: 180px;
+}
+
+label[for^='condition'][for$='1'],
+label[for^='condition'][for$='2'],
+label[for^='condition'][for$='3'],
+label[for^='condition'][for$='4'],
+label[for^='condition'][for$='5'] {
+	padding-left: 5px;
+	width: 20px;
+}
+
+input[type=button],
+input[type=submit] {
+	margin: 5px 0;
+	padding: 3px 10px;
+}
+
+a img {
+	border: none;
+}
+
+br.clear {
+	clear: both;
+}

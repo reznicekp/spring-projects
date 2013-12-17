@@ -1,0 +1,119 @@
+appName=Čtěnáři sobě
+
+yes=Ano
+no=Ne
+delete=Odstranit
+
+menu.home=Úvodní stránka
+menu.search=Vyhledávání
+menu.help=Nápověda
+menu.myBooks=Mé knihy
+menu.newBook=Nová kniha
+menu.borrowedBooks=Cizí knihy
+menu.credentials=Osobní údaje
+menu.password=Změnit heslo
+
+form.email=E-mail
+form.password=Heslo
+form.firstname=Jméno
+form.lastname=Příjmení
+form.birthYear=Rok narození
+form.gpsLatitude=Zeměpisná šířka
+form.gpsLongitude=Zeměpisná délka
+form.whatToSearch=Co hledat
+form.oldPassword=Původní heslo
+form.newPassword=Nové heslo
+form.confirmPassword=Potvrzení nového hesla
+
+btn.login=Přihlásit
+btn.logout=Odhlásit
+btn.signIn=Vytvořit účet
+btn.ok=OK
+btn.back=Zpět
+btn.prev=Předchozí
+btn.next=Další
+btn.edit=Editovat
+btn.search=Vyhledat
+btn.withoutFeedback=Vrátit bez reference
+
+home.1=Toto je aplikace určená čtenářům z celého světa.
+home.2=Pokud ještě nemáte účet, můžete si ho <a href="registration">vytvořit</a>.
+
+registration=Vytvořit účet
+
+search.request=žádost
+
+book.detail=Detail knihy
+book.edit=Editace údajů knihy
+book.new=Nová kniha
+book.name=Název
+book.author=Autor
+book.year=Rok vydání
+book.photo=Foto
+book.owner=Majitel
+book.canBeHired=Zveřejnit
+book.condition.spilled=Polito
+book.condition.bentEdges=Ohnuté rohy
+book.condition.tornLeaves=Roztrhané stránky
+book.condition.missingLeaves=Chybějící stránky
+book.condition.average=Průměr
+book.isNowHired=Nyní půjčeno
+book.isNowRequested=žádost odeslána
+book.requestCount=Počet žádostí
+book.homeOrHired=Současný stav
+book.atHome=k dispozici na půjčení
+book.hiredBy=půjčeno uživatelem
+book.since=od
+book.hiredBySince=půjčeno uživatelem {0} od {1}
+book.requestedByWhen=zažádáno uživatelem {0}, čas {1}
+book.hiredWhen=půjčeno od {0}
+book.requestedWhen=zažádáno {0} (<a href="borrowed-books/cancel-request/{1}">zrušit</a>)
+book.refusedWhen=zamítnuto {0} (<a href="borrowed-books/confirm-refuse/{1}">ok</a>)
+book.hire=půjčit
+book.refuse=zamítnout
+book.return=ukončit vypůjčení
+book.terminateHireFirst=je potřeba nejdříve ukončit současné vypůjčení
+book.deleteDisabledReason=je potřeba nejdříve ukončit současné vypůjčení a žádosti
+book.deleteConfirm=Opravdu si přejete odstranit knihu {0}?
+
+credentials.edit=Editace osobních údajů
+
+feedback.title=Hodnocení uživatele
+feedback.rentTiming=Uživatel nedodržel domluvenou dobu vypůjčení
+feedback.bookDamage=Uživatel vrátil knihu ve výrazně horším stavu
+feedback.bookLoss=Uživatel knihu vůbec nevrátil
+feedback.abbr.rentTiming=kniha nevrácena včas
+feedback.abbr.bookDamage=kniha vrácena v horším stavu
+feedback.abbr.bookLoss=kniha nevrácena
+
+user.experience=zkušenosti s
+
+error=Chyba
+error.invalidUrl=Požadovaná stránka neexistuje!
+error.required.lastname=Pole Příjmení je povinné
+error.required.email=Pole E-mail je povinné
+error.required.password=Pole Heslo je povinné
+error.required.birthYear=Pole Rok narození je povinné
+error.required.gpsLatitude=Pole Změnpisná šířka je povinné
+error.required.gpsLongitude=Pole Změnpisná délka je povinné
+error.required.searchedSubject=Pole Co hledat je povinné
+error.required.oldPassword=Pole Původní heslo je povinné
+error.required.newPassword=Pole Nové heslo je povinné
+error.required.confirmPassword=Pole Potvrzení nového hesla je povinné
+error.required.name=Pole Název je povinné
+error.required.author=Pole Autor je povinné
+error.required.rentTiming=Pole Doba vypůjčení je povinné
+error.required.bookDamage=Pole Horší stav je povinné
+error.required.bookLoss=Pole Nevrátil je povinné
+error.invalid.lastname=Příjmení není validní
+error.invalid.email=E-mail není validní
+error.invalid.birthYear=Rok narození není validní
+error.invalid.birthYearRange=Rok narození musí být mezi 1900 a {0}
+error.invalid.gpsLatitude=Zeměpisná šířka není validní
+error.invalid.gpsLongitude=Zeměpisná délka není validní
+error.invalid.oldPaswordNotCorrect=Nebylo zadáno správné původní heslo
+error.invalid.newConfirmPasswordNotSame=Nové heslo a jeho potvrzení není shodné
+error.invalid.loggingCredentials=Uživatel nebyl nalezen!
+error.invalid.year=Rok vydání musí být celé číslo
+
+success.password=Vaše heslo bylo úspěšně změněno.
