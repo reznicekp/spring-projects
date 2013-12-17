@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="exceptionLayout" extends="basicLayout">
+		<put-attribute name="title" value="error"/>
+	</definition>
+	
+	<definition name="invalidUrlException" extends="exceptionLayout">
+		<put-attribute name="content" value="/jsp/exception/invalidUrlException.jsp"/>
+	</definition>
+	
+	<definition name="nonUniqueObjectException" extends="exceptionLayout">
+		<put-attribute name="content" value="/jsp/exception/nonUniqueObjectException.jsp"/>
+	</definition>
+	
+	<definition name="parseException" extends="exceptionLayout">
+		<put-attribute name="content" value="/jsp/exception/parseException.jsp"/>
+	</definition>
+</tiles-definitions>

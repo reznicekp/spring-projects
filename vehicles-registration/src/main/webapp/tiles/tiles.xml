@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="basicLayout" template="/jsp/basicLayout.jsp"/>
+	
+	<definition name="searchTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.search"/>
+		<put-attribute name="content" value="/jsp/search.jsp"/>
+	</definition>
+	
+	<definition name="createCarTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.car"/>
+		<put-attribute name="content" value="/jsp/createCar.jsp"/>
+	</definition>
+	
+	<definition name="createMotorcycleTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.motorcycle"/>
+		<put-attribute name="content" value="/jsp/createMotorcycle.jsp"/>
+	</definition>
+	
+	<definition name="createTruckTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.truck"/>
+		<put-attribute name="content" value="/jsp/createTruck.jsp"/>
+	</definition>
+	
+	<definition name="createBusTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.bus"/>
+		<put-attribute name="content" value="/jsp/createBus.jsp"/>
+	</definition>
+	
+	<definition name="detailCarTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.car"/>
+		<put-attribute name="content" value="/jsp/detailCar.jsp"/>
+	</definition>
+	
+	<definition name="detailMotorcycleTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.motorcycle"/>
+		<put-attribute name="content" value="/jsp/detailMotorcycle.jsp"/>
+	</definition>
+	
+	<definition name="detailTruckTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.truck"/>
+		<put-attribute name="content" value="/jsp/detailTruck.jsp"/>
+	</definition>
+	
+	<definition name="detailBusTile" extends="basicLayout">
+		<put-attribute name="title" value="menu.bus"/>
+		<put-attribute name="content" value="/jsp/detailBus.jsp"/>
+	</definition>
+	
+	<definition name="bugs" extends="basicLayout">
+		<put-attribute name="title" value="menu.bugs"/>
+		<put-attribute name="content" value="/jsp/bugs.jsp"/>
+	</definition>
+</tiles-definitions>
