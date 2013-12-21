@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
@@ -197,7 +198,7 @@ public class BookDao extends BaseDao {
 		// zajisteni lazy nacitani stavu knihy (na atribut userBookStateList tridy Book nelze nastavit fetch=FetchType.EAGER, protoze se potom duplikuji zaznamy v sekci My Books)
 		for (Book book : bookList) {
 			if (book.getUserBookStateList() != null) {
-				book.getUserBookStateList().size();
+				Hibernate.initialize(book.getUserBookStateList());	// inicializace kolekce - neni nastaveno na eager
 			}
 		}
 		

@@ -61,30 +61,41 @@
 	</fieldset>
 	
 	<input type="submit" value='<spring:message code="btn.search"/>'/>
-</form:form>
-
-<table class="list">
-	<tr>
-		<th>#</th>
-		<th><spring:message code="plateNumber"/></th>
-		<th><spring:message code="brandAndModel"/></th>
-		<th><spring:message code="makingYear"/></th>
-		<th><spring:message code="motEnd"/></th>
-		<th><spring:message code="owner"/></th>
-	</tr>
 	
-	<c:forEach items="${searchFormBean.searchResultFormBeanList}" var="searchResult">
+	
+	<table class="list">
 		<tr>
-			<td>${searchResult.order}</td>
-			<td class="center"><a href="<%= request.getContextPath() %>/detail-${fn:toLowerCase(searchResult.vehicleType)}/${searchResult.id}">${searchResult.plateNumber}</a></td>
-			<td>${searchResult.brandAndModel}</td>
-			<td class="center">${searchResult.makingYear}</td>
-			<td class="center">${searchResult.motEnd}</td>
-			<td>${searchResult.owner}</td>
+			<th>#</th>
+			<th><spring:message code="plateNumber"/></th>
+			<th><spring:message code="brandAndModel"/></th>
+			<th><spring:message code="makingYear"/></th>
+			<th><spring:message code="motEnd"/></th>
+			<th><spring:message code="owner"/></th>
 		</tr>
-	</c:forEach>
-</table>
-
-<c:if test="${empty searchFormBean.searchResultFormBeanList}">
-	<spring:message code="noDataFound"/>
-</c:if>
+		
+		<c:set var="i" value="1"/>
+		<c:forEach items="${searchFormBean.searchResultFormBeanList}" var="searchResult">
+			<tr>
+				<td>${pageSize * (searchFormBean.searchResultFormBeanList_page - 1) + i}.</td>
+				<td class="center"><a href="<%= request.getContextPath() %>/detail-${fn:toLowerCase(searchResult.vehicleType)}/${searchResult.id}">${searchResult.plateNumber}</a></td>
+				<td>${searchResult.brandAndModel}</td>
+				<td class="center">${searchResult.makingYear}</td>
+				<td class="center">${searchResult.motEnd}</td>
+				<td>${searchResult.owner}</td>
+			</tr>
+			<c:set var="i" value="${i + 1}"/>
+		</c:forEach>
+	</table>
+	
+	<form:hidden path="searchResultFormBeanList_page"/>
+	<c:if test="${searchResultFormBeanList_pagingPrevVisible}">
+		<input type="submit" name="prev" value='<spring:message code="btn.prev"/>'/>
+	</c:if>
+	<c:if test="${searchResultFormBeanList_pagingNextVisible}">
+		<input type="submit" name="next" value='<spring:message code="btn.next"/>'/>
+	</c:if>
+	
+	<c:if test="${empty searchFormBean.searchResultFormBeanList}">
+		<spring:message code="noDataFound"/>
+	</c:if>
+</form:form>

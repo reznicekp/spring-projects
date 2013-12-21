@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.preznicek.vehiclesregistration.database.domain.Insurance;
 import org.preznicek.vehiclesregistration.database.domain.Owner;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCT;
@@ -55,7 +57,8 @@ public class Vehicle {
 	@ManyToOne(cascade=CascadeType.ALL, optional=false)
 	private Owner owner;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="vehicle", fetch=FetchType.EAGER)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="vehicle")//, fetch=FetchType.EAGER)	// nahrazeno @LazyCollection (JPA @OneToMany nepodporuje eager nacitani vice kolekci najednou, zatimco Hibernate @LazyCollection ano - zde je eager nacitana jeste owner.vehicleList)
 	private List<Insurance> insuranceList;
 	
 	

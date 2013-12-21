@@ -26,6 +26,11 @@
 		<put-attribute name="content" value="/jsp/help.jsp"/>
 	</definition>
 	
+	<definition name="bugs" extends="basicPublicLayout">
+		<put-attribute name="title" value="menu.bugs"/>
+		<put-attribute name="content" value="/jsp/bugs.jsp"/>
+	</definition>
+	
 	<definition name="registration" extends="basicPublicLayout">
 		<put-attribute name="title" value="registration"/>
 		<put-attribute name="content" value="/jsp/registration.jsp"/>

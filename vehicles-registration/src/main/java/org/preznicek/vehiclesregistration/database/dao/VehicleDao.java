@@ -9,8 +9,10 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.preznicek.vehiclesregistration.database.PageData;
 import org.preznicek.vehiclesregistration.database.domain.Owner;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCT;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Vehicle;
@@ -29,12 +31,12 @@ public class VehicleDao extends BaseDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Vehicle> getVehicleList(SearchFormBean searchFormBean) throws ParseException {
+	public PageData getVehicleList(SearchFormBean searchFormBean, int pageNumber) throws ParseException {
 		getSession();
 		
 		Criteria criteria = session.createCriteria(Vehicle.class, "v")
 									.createAlias("owner", "o")
-									.createAlias("brand", "b")
+									.createAlias("brand", "b", CriteriaSpecification.LEFT_JOIN)
 									.createCriteria("insuranceList", "i", CriteriaSpecification.LEFT_JOIN)
 									.createCriteria("insuranceCompany", "c", CriteriaSpecification.LEFT_JOIN);
 		criteria.setProjection(Projections.distinct(Projections.projectionList()
@@ -51,6 +53,7 @@ public class VehicleDao extends BaseDao {
 //				.add(Projections.property("i.otherInsuranceCompanyName"))
 //				.add(Projections.property("c.value"))
 		));
+		criteria.addOrder(Order.asc("o.lastname"));
 		
 		if (searchFormBean.getSearchVehicleFormBean() != null) {
 			if (!StringUtils.isEmpty(searchFormBean.getSearchVehicleFormBean().getPlateNumber())) {
@@ -93,6 +96,11 @@ public class VehicleDao extends BaseDao {
 			}
 		}
 		
+		int count = criteria.list().size();
+		
+		criteria.setFirstResult((pageNumber - 1) * Constants.PAGE_SIZE);
+		criteria.setMaxResults(Constants.PAGE_SIZE);
+		
 		List<Object> objectList = criteria.list();
 		List<Vehicle> vehicleList = new ArrayList<Vehicle>();
 		
@@ -117,7 +125,7 @@ public class VehicleDao extends BaseDao {
 			vehicleList.add(vehicle);
 		}
 		
-		return vehicleList;
+		return new PageData(vehicleList, count);
 	}
 	
 	public Vehicle getVehicleById(Long id, Class<? extends Vehicle> clazz) {
@@ -128,6 +136,12 @@ public class VehicleDao extends BaseDao {
 		return vehicle;
 	}
 	
+	/**
+	 * NEPOUZIVA SE - bylo nahrazeno eager nacitanim.
+	 * @param ownerId	ID majitele vozidel.
+	 * @return	Seznam vozidel daneho majitele.
+	 */
+	@Deprecated
 	@SuppressWarnings("unchecked")
 	public List<Vehicle> getVehicleListByOwnerId(Long ownerId) {
 		getSession();

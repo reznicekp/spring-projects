@@ -179,6 +179,7 @@ public class CreateController extends BaseController {
 		if (owner == null) {
 			owner = new Owner();
 		}
+		owner.setVehicleList(null);		// jinak org.hibernate.NonUniqueObjectException: a different object with the same identifier value was already associated with the session
 		owner.setFirstname(createFormBean.getOwner().getFirstname());
 		owner.setLastname(createFormBean.getOwner().getLastname());
 		owner.setBirthCertificateNumber(createFormBean.getOwner().getBirthCertificateNumber());
@@ -221,16 +222,14 @@ public class CreateController extends BaseController {
 			createFormBean.getOwner().setPhone1(owner.getPhone1());
 			createFormBean.getOwner().setPhone2(owner.getPhone2());
 			
-			List<Vehicle> vehiclesOfOwner = vehicleService.getVehicleListByOwnerId(Long.valueOf(createFormBean.getOwner().getId()));
 			List<SearchResultFormBean> searchResultList = new ArrayList<SearchResultFormBean>();
-			for (Vehicle vehicleOfOwner : vehiclesOfOwner) {
+			for (Vehicle vehicleOfOwner : owner.getVehicleList()) {
 				if (vehicleOfOwner.getId().longValue() == Long.valueOf(createFormBean.getOwner().getId()).longValue()) {	// aktualne zobrazovane vozidlo se v seznamu nezobrazuje
 					continue;
 				}
 				
 				SearchResultFormBean searchResult = new SearchResultFormBean();
 				searchResult.setId(String.valueOf(vehicleOfOwner.getId()));
-				searchResult.setOrder("1");
 				searchResult.setVehicleType(vehicleOfOwner.getVehicleType());
 				searchResult.setPlateNumber(vehicleOfOwner.getPlateNumber());
 				searchResult.setBrandAndModel((vehicleOfOwner.getBrand() != null ? vehicleOfOwner.getBrand().getValue() : vehicleOfOwner.getOtherBrandName()) + " " + vehicleOfOwner.getModel());

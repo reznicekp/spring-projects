@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.preznicek.vehiclesregistration.database.PageData;
 import org.preznicek.vehiclesregistration.database.domain.Owner;
 import org.preznicek.vehiclesregistration.database.domain.codetable.FuelCT;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Car;
@@ -69,7 +70,8 @@ public class VehicleTest {
 	@Test
 	@Transactional
 	public void testGetVehicleList() throws ParseException {
-		List<Vehicle> vehicleList = vehicleService.getVehicleList(new SearchFormBean());
+		PageData pageData = vehicleService.getVehicleList(new SearchFormBean(), 1);
+		List<Vehicle> vehicleList = (List<Vehicle>) pageData.getItems();
 		Assert.assertNotNull(vehicleList);
 		for (Vehicle vehicle : vehicleList) {
 			Assert.assertNotNull(vehicle);

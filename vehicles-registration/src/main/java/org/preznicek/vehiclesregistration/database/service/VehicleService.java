@@ -1,8 +1,8 @@
 package org.preznicek.vehiclesregistration.database.service;
 
 import java.text.ParseException;
-import java.util.List;
 
+import org.preznicek.vehiclesregistration.database.PageData;
 import org.preznicek.vehiclesregistration.database.dao.VehicleDao;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Vehicle;
 import org.preznicek.vehiclesregistration.model.formbean.SearchFormBean;
@@ -22,17 +22,12 @@ public class VehicleService {
 	}
 	
 	@Transactional(readOnly=true)
-	public List<Vehicle> getVehicleList(SearchFormBean searchFormBean) throws ParseException {
-		return vehicleDao.getVehicleList(searchFormBean);
+	public PageData getVehicleList(SearchFormBean searchFormBean, int pageNumber) throws ParseException {
+		return vehicleDao.getVehicleList(searchFormBean, pageNumber);
 	}
 	
 	@Transactional(readOnly=true)
 	public Vehicle getVehicleById(Long id, Class<? extends Vehicle> clazz) {
 		return vehicleDao.getVehicleById(id, clazz);
-	}
-	
-	@Transactional(readOnly=true)
-	public List<Vehicle> getVehicleListByOwnerId(Long ownerId) {
-		return vehicleDao.getVehicleListByOwnerId(ownerId);
 	}
 }

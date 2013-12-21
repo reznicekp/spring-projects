@@ -31,14 +31,17 @@
 		<th><spring:message code="motEnd"/></th>
 	</tr>
 	
+	<c:set var="i" value="1"/>
 	<c:forEach items="${detailFormBean.owner.vehiclesOfOwner}" var="vehicleOfOwner">
 		<tr>
-			<td>${vehicleOfOwner.order}</td>
+			<td>${i}.</td>
 			<td class="center"><a href="<%= request.getContextPath() %>/detail-${fn:toLowerCase(vehicleOfOwner.vehicleType)}/${vehicleOfOwner.id}">${vehicleOfOwner.plateNumber}</a></td>
 			<td>${vehicleOfOwner.brandAndModel}</td>
 			<td class="center">${vehicleOfOwner.makingYear}</td>
 			<td class="center">${vehicleOfOwner.motEnd}</td>
 		</tr>
+		
+		<c:set var="i" value="${i + 1}"/>
 	</c:forEach>
 </table>
 

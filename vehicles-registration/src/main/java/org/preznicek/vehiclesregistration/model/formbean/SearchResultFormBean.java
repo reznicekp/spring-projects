@@ -2,7 +2,6 @@ package org.preznicek.vehiclesregistration.model.formbean;
 
 public class SearchResultFormBean {
 
-	private String order;
 	private String id;
 	private String vehicleType;
 	private String plateNumber;
@@ -11,12 +10,6 @@ public class SearchResultFormBean {
 	private String motEnd;
 	private String owner;
 	
-	public String getOrder() {
-		return order;
-	}
-	public void setOrder(String order) {
-		this.order = order;
-	}
 	public String getId() {
 		return id;
 	}
@@ -62,9 +55,9 @@ public class SearchResultFormBean {
 	
 	@Override
 	public String toString() {
-		return "SearchResultFormBean [order=" + order + ", plateNumber="
-				+ plateNumber + ", brandAndModel=" + brandAndModel
-				+ ", makingYear=" + makingYear + ", motEnd=" + motEnd
-				+ ", owner=" + owner + "]";
+		return "SearchResultFormBean [id=" + id + ", vehicleType="
+				+ vehicleType + ", plateNumber=" + plateNumber
+				+ ", brandAndModel=" + brandAndModel + ", makingYear="
+				+ makingYear + ", motEnd=" + motEnd + ", owner=" + owner + "]";
 	}
 }

@@ -21,9 +21,6 @@
     </head>
     
     <body>
-    	<ul>
-    		<li>nefunguje tlacitko back pri vyhledani knihy, requestu a listovani (Cesta kolem sveta za 80 dni)</li>
-    	</ul>
     	<div id="header">
     		<div id="titles">
 				<h1><spring:message code="appName"/></h1>

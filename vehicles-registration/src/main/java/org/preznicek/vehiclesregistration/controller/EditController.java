@@ -122,16 +122,14 @@ public class EditController extends BaseController {
 		ownerFormBean.setPhone1(vehicle.getOwner().getPhone1());
 		ownerFormBean.setPhone2(vehicle.getOwner().getPhone2());
 		
-		List<Vehicle> vehiclesOfOwner = vehicleService.getVehicleListByOwnerId(vehicle.getOwner().getId());
 		List<SearchResultFormBean> searchResultList = new ArrayList<SearchResultFormBean>();
-		for (Vehicle vehicleOfOwner : vehiclesOfOwner) {
+		for (Vehicle vehicleOfOwner : vehicle.getOwner().getVehicleList()) {
 			if (vehicleOfOwner.getId().longValue() == vehicle.getId().longValue()) {	// aktualne zobrazovane vozidlo se v seznamu nezobrazuje
 				continue;
 			}
 			
 			SearchResultFormBean searchResult = new SearchResultFormBean();
 			searchResult.setId(String.valueOf(vehicleOfOwner.getId()));
-			searchResult.setOrder("1");
 			searchResult.setVehicleType(vehicleOfOwner.getVehicleType());
 			searchResult.setPlateNumber(vehicleOfOwner.getPlateNumber());
 			searchResult.setBrandAndModel((vehicleOfOwner.getBrand() != null ? vehicleOfOwner.getBrand().getValue() : vehicleOfOwner.getOtherBrandName()) + " " + vehicleOfOwner.getModel());

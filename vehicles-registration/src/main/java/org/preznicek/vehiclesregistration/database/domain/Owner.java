@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Vehicle;
 
 @Entity
@@ -38,6 +40,7 @@ public class Owner {
 	@Column(length=20)
 	private String phone2;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="owner")
 	private List<Vehicle> vehicleList;
 	
