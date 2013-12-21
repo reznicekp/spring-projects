@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="basicPrivateLayout" template="/jsp/basicLayout.jsp">
+		<put-attribute name="menu" value="/jsp/menu/private.jsp"/>
+	</definition>
+	
+	<definition name="search" extends="basicPrivateLayout">
+		<put-attribute name="title" value="menu.search"/>
+		<put-attribute name="content" value="/jsp/search.jsp"/>
+	</definition>
+	
+	<definition name="help" extends="basicPrivateLayout">
+		<put-attribute name="title" value="menu.help"/>
+		<put-attribute name="content" value="/jsp/help.jsp"/>
+	</definition>
+	
+	<definition name="book" extends="basicPrivateLayout">
+		<put-attribute name="title" value="book.detail"/>
+		<put-attribute name="content" value="/jsp/book.jsp"/>
+	</definition>
+	
+	<definition name="book-edit" extends="basicPrivateLayout">
+		<put-attribute name="title" value="book.edit"/>
+		<put-attribute name="content" value="/jsp/bookEdit.jsp"/>
+	</definition>
+	
+	<definition name="book-new" extends="basicPrivateLayout">
+		<put-attribute name="title" value="book.new"/>
+		<put-attribute name="content" value="/jsp/bookEdit.jsp"/>
+	</definition>
+	
+	<definition name="credentials" extends="basicPrivateLayout">
+		<put-attribute name="title" value="menu.credentials"/>
+		<put-attribute name="content" value="/jsp/credentials.jsp"/>
+	</definition>
+	
+	<definition name="credentialsEdit" extends="basicPrivateLayout">
+		<put-attribute name="title" value="credentials.edit"/>
+		<put-attribute name="content" value="/jsp/credentialsEdit.jsp"/>
+	</definition>
+	
+	<definition name="password" extends="basicPrivateLayout">
+		<put-attribute name="title" value="menu.password"/>
+		<put-attribute name="content" value="/jsp/password.jsp"/>
+	</definition>
+	
+	<definition name="myBooks" extends="basicPrivateLayout">
+		<put-attribute name="title" value="menu.myBooks"/>
+		<put-attribute name="content" value="/jsp/myBooks.jsp"/>
+	</definition>
+	
+	<definition name="borrowedBooks" extends="basicPrivateLayout">
+		<put-attribute name="title" value="menu.borrowedBooks"/>
+		<put-attribute name="content" value="/jsp/borrowedBooks.jsp"/>
+	</definition>
+	
+	<definition name="feedback" extends="basicPrivateLayout">
+		<put-attribute name="title" value="feedback.title"/>
+		<put-attribute name="content" value="/jsp/feedback.jsp"/>
+	</definition>
+</tiles-definitions>

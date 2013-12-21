@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<!-- sekce, ktere jsou ve verejne i soukrome casti aplikace, maji postfix _public, aby se rozlisilo, 
+	jestli se ma v danem pripade na strance zobrazit verejne nebo soukrome menu -->
+	
+	<definition name="basicPublicLayout" template="/jsp/basicLayout.jsp">
+		<put-attribute name="menu" value="/jsp/menu/public.jsp"/>
+	</definition>
+	
+	<definition name="home" extends="basicPublicLayout">
+		<put-attribute name="title" value="menu.home"/>
+		<put-attribute name="content" value="/jsp/home.jsp"/>
+	</definition>
+	
+	<definition name="search_public" extends="basicPublicLayout">
+		<put-attribute name="title" value="menu.search"/>
+		<put-attribute name="content" value="/jsp/search.jsp"/>
+	</definition>
+	
+	<definition name="help_public" extends="basicPublicLayout">
+		<put-attribute name="title" value="menu.help"/>
+		<put-attribute name="content" value="/jsp/help.jsp"/>
+	</definition>
+	
+	<definition name="bugs" extends="basicPublicLayout">
+		<put-attribute name="title" value="menu.bugs"/>
+		<put-attribute name="content" value="/jsp/bugs.jsp"/>
+	</definition>
+	
+	<definition name="registration" extends="basicPublicLayout">
+		<put-attribute name="title" value="registration"/>
+		<put-attribute name="content" value="/jsp/registration.jsp"/>
+	</definition>
+	
+	<definition name="book_public" extends="basicPublicLayout">
+		<put-attribute name="title" value="book.detail"/>
+		<put-attribute name="content" value="/jsp/book.jsp"/>
+	</definition>
+</tiles-definitions>
