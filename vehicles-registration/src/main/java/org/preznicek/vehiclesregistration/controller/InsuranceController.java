@@ -36,6 +36,13 @@ public class InsuranceController extends BaseController {
 	@Autowired
 	private InsuranceService insuranceService;
 	
+	/**
+	 * Ulozi zaznam pojisteni pro automobil.
+	 * @param createFormBean	Data pojisteni.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return
+	 * @throws ParseException	Pokud neni korektne zadano datum Aktivni od nebo Aktivni do.
+	 */
 	@RequestMapping(value="/upsert-car", params="saveInsurance", method=RequestMethod.POST)
 	public ModelAndView createCarInsurance(@Valid @ModelAttribute(value="createFormBean") CreateCarFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -49,6 +56,13 @@ public class InsuranceController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-car/" + createFormBean.getVehicle().getId(), true));
 	}
 	
+	/**
+	 * Ulozi zaznam pojisteni pro motocykl.
+	 * @param createFormBean	Data pojisteni.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return
+	 * @throws ParseException	Pokud neni korektne zadano datum Aktivni od nebo Aktivni do.
+	 */
 	@RequestMapping(value="/upsert-motorcycle", params="saveInsurance", method=RequestMethod.POST)
 	public ModelAndView createMotorcycleInsurance(@Valid @ModelAttribute(value="createFormBean") CreateMotorcycleFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -62,6 +76,13 @@ public class InsuranceController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-motorcycle/" + createFormBean.getVehicle().getId(), true));
 	}
 	
+	/**
+	 * Ulozi zaznam pojisteni pro nakladni automobil.
+	 * @param createFormBean	Data pojisteni.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return
+	 * @throws ParseException	Pokud neni korektne zadano datum Aktivni od nebo Aktivni do.
+	 */
 	@RequestMapping(value="/upsert-truck", params="saveInsurance", method=RequestMethod.POST)
 	public ModelAndView createTruckInsurance(@Valid @ModelAttribute(value="createFormBean") CreateTruckFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -75,6 +96,13 @@ public class InsuranceController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-truck/" + createFormBean.getVehicle().getId(), true));
 	}
 	
+	/**
+	 * Ulozi zaznam pojisteni pro autobus.
+	 * @param createFormBean	Data pojisteni.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return
+	 * @throws ParseException	Pokud neni korektne zadano datum Aktivni od nebo Aktivni do.
+	 */
 	@RequestMapping(value="/upsert-bus", params="saveInsurance", method=RequestMethod.POST)
 	public ModelAndView createBusInsurance(@Valid @ModelAttribute(value="createFormBean") CreateBusFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -88,6 +116,13 @@ public class InsuranceController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-bus/" + createFormBean.getVehicle().getId(), true));
 	}
 	
+	/**
+	 * Nastavi parametry pojsiteni. To je spolecne pro vsechny typy vozidel, proto je to ve specialni metode.
+	 * @param vehicle			Vozidlo, pro ktere se pojisteni nastavuje.
+	 * @param createFormBean	Formular s udaji pojisteni.
+	 * @return					Pojisteni, ktere se bude nasledne ukladat do databaze.
+	 * @throws ParseException	Pokud neni korektne zadano datum Aktivni od nebo Aktivni do (je ale osetreno ve validaci formulare, takze zde by se chyba nemela nikdy vyskytnout).
+	 */
 	private Insurance setInsuranceAttributes(Vehicle vehicle, CreateFormBean createFormBean) throws ParseException {
 		Insurance insurance = new Insurance();
 		insurance.setInsuranceCompany((InsuranceCompanyCT) codeTableService.getCodeTableRow(InsuranceCompanyCT.class, Integer.valueOf(createFormBean.getInsurance().getCompanyCode())));
@@ -99,6 +134,12 @@ public class InsuranceController extends BaseController {
 		return insurance;
 	}
 	
+	/**
+	 * Odstrani zaznam pojisteni z databaze. Kvuli naslednemu spravnemu presmerovani je potreba nejdrive 
+	 * zjistit typ vozidla a jeho ID.
+	 * @param id	ID zaznamu pojisteni, ktere bude odstraneno.
+	 * @return		Presmerovani na detail vozidla.
+	 */
 	@RequestMapping(value="/delete-insurance/{id}", method=RequestMethod.GET)
 	public String deleteInsurance(@PathVariable(value="id") Long id) {
 		Insurance insurance = insuranceService.getInsuranceById(id);

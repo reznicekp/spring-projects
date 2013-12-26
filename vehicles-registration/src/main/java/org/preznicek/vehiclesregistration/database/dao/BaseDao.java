@@ -11,6 +11,9 @@ public class BaseDao {
 	
 	protected Session session;
 	
+	/**
+	 * Vrati aktualni session.
+	 */
 	protected void getSession() {
 		session = sessionFactory.getCurrentSession();
 	}

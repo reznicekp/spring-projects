@@ -21,12 +21,22 @@ import org.springframework.util.StringUtils;
 @Repository
 public class VehicleDao extends BaseDao {
 
+	/**
+	 * Ulozi vozidlo do databaze.
+	 * @param vehicle	Vozidlo.
+	 */
 	public void upsert(Vehicle vehicle) {
 		getSession();
-		
 		session.saveOrUpdate(vehicle);
 	}
 	
+	/**
+	 * Vyhleda vozidla podle zadanych kriterii.
+	 * @param searchFormBean	Formular s vyhledavacimi kriterii.
+	 * @param pageNumber		Cislo stranky ve strankovani.
+	 * @return					Vyhledana vozidla.
+	 * @throws ParseException	Pokud neni korektne zadany datum konce STK (nenastane, protoze se tato chyba odchyti uz ve validaci).
+	 */
 	@SuppressWarnings("unchecked")
 	public PageData getVehicleList(SearchFormBean searchFormBean, int pageNumber) throws ParseException {
 		getSession();
@@ -74,14 +84,17 @@ public class VehicleDao extends BaseDao {
 			}
 		}
 		
+		// celkovy pocet odpovidajicich zaznamu v databazi
 		int count = criteria.list().size();
 		
 		criteria.setFirstResult((pageNumber - 1) * Constants.PAGE_SIZE);
 		criteria.setMaxResults(Constants.PAGE_SIZE);
 		
+		// zaznamy s ohledem na strankovani
 		List<SearchView> searchViewList = criteria.list();
 		List<Vehicle> vehicleList = new ArrayList<Vehicle>();
 		
+		// mapovani na objekty tridy Vehicle
 		for (SearchView searchView : searchViewList) {
 			Vehicle vehicle = new Vehicle();
 			vehicle.setId(searchView.getVehicleId());
@@ -103,11 +116,14 @@ public class VehicleDao extends BaseDao {
 		return new PageData(vehicleList, count);
 	}
 	
+	/**
+	 * Vrati detail vozidla podle jeho ID.
+	 * @param id		ID vozidla.
+	 * @param clazz		Trida urcujici typ vozidla.
+	 * @return			Detail vozidla.
+	 */
 	public Vehicle getVehicleById(Long id, Class<? extends Vehicle> clazz) {
 		getSession();
-		
-		Vehicle vehicle = (Vehicle) session.get(clazz, id);
-		
-		return vehicle;
+		return (Vehicle) session.get(clazz, id);
 	}
 }

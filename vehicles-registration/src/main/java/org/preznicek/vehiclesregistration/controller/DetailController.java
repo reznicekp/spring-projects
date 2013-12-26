@@ -38,6 +38,11 @@ public class DetailController extends BaseController {
 	@Autowired
 	private VehicleService vehicleService;
 	
+	/**
+	 * Na zaklade ID v URL z databaze dotahne detail automobilu a tato data zobrazi v needitovatelne podobe.
+	 * @param id	ID vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/detail-car/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailCar(@PathVariable(value="id") Long id) {
 		Car car = (Car) vehicleService.getVehicleById(id, Car.class);
@@ -56,6 +61,11 @@ public class DetailController extends BaseController {
 		return new ModelAndView("detailCarTile", "detailFormBean", detailFormBean);
 	}
 	
+	/**
+	 * Na zaklade ID v URL z databaze dotahne detail motocyklu a tato data zobrazi v needitovatelne podobe.
+	 * @param id	ID vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/detail-motorcycle/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailMotorcycle(@PathVariable(value="id") Long id) {
 		Motorcycle motorcycle = (Motorcycle) vehicleService.getVehicleById(id, Motorcycle.class);
@@ -72,6 +82,11 @@ public class DetailController extends BaseController {
 		return new ModelAndView("detailMotorcycleTile", "detailFormBean", detailFormBean);
 	}
 	
+	/**
+	 * Na zaklade ID v URL z databaze dotahne detail nakladniho automobilu a tato data zobrazi v needitovatelne podobe.
+	 * @param id	ID vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/detail-truck/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailTruck(@PathVariable(value="id") Long id) {
 		Truck truck = (Truck) vehicleService.getVehicleById(id, Truck.class);
@@ -89,6 +104,11 @@ public class DetailController extends BaseController {
 		return new ModelAndView("detailTruckTile", "detailFormBean", detailFormBean);
 	}
 	
+	/**
+	 * Na zaklade ID v URL z databaze dotahne detail autobusu a tato data zobrazi v needitovatelne podobe.
+	 * @param id	ID vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/detail-bus/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailBus(@PathVariable(value="id") Long id) {
 		Bus bus = (Bus) vehicleService.getVehicleById(id, Bus.class);
@@ -107,6 +127,12 @@ public class DetailController extends BaseController {
 		return new ModelAndView("detailBusTile", "detailFormBean", detailFormBean);
 	}
 	
+	/**
+	 * Na zaklade udaju vozidla vyplni obecne atributy <code>detailFormBean</code> (spolecne pro 
+	 * vsechny typy vozidel).
+	 * @param vehicle			Vozidlo, jehoz udaje se vyplnuji do <code>detailFormBean</code>.
+	 * @param detailFormBean	Needitovatelny formular se spolecnymi udaji pro vsechny typy vozidel.
+	 */
 	private void setGeneralAttributes(Vehicle vehicle, CreateFormBean detailFormBean) {
 		VehicleFormBean vehicleFormBean = new VehicleFormBean();
 		vehicleFormBean.setId(String.valueOf(vehicle.getId()));

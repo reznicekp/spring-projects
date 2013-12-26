@@ -23,6 +23,10 @@ public class CodeTableController extends BaseController {
 	@Autowired
 	private WebApplicationContext ctx;
 	
+	/**
+	 * Naplni ciselniky.
+	 * @return	Nazev view - presmerovani na uvodni obrazovku aplikace.
+	 */
 	@RequestMapping(value="/ct")
 	public String fillCodeTables() {
 		List<BodyworkBusCT> bodyworkBusCT = new ArrayList<BodyworkBusCT>();

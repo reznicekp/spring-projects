@@ -56,6 +56,18 @@ public class CreateController extends BaseController {
 	@Autowired
 	private OwnerService ownerService;
 	
+	/**
+	 * Nastaveni validatoru. Potvrzeni tohoto formulare se provadi pri ukladani vozidla (libovolneho 
+	 * typu), ukladani pojisteni nebo pri ziskavani uzivatele na zaklade jeho rodneho cisla. Pouze 
+	 * v prvnich dvou pripadech se provadi validace (a spousti se tedy tato metoda <code>createBinder</code>).<br>
+	 * Pokud se jedna o ukladani vozidla, parametr <code>saveVehicle</code> neni <code>null</code> 
+	 * a nastavi se validator prislusneho typu (podle typu ukladaneho vozidla).<br>
+	 * Pokud se jedna o ukladani pojisteni, parametr <code>saveInsurance</code> neni <code>null</code> 
+	 * a nastaci se validator pro pojisteni.
+	 * @param binder
+	 * @param saveVehicle
+	 * @param saveInsurance
+	 */
 	@InitBinder(value="createFormBean")
 	public void createBinder(WebDataBinder binder, @RequestParam(value="saveVehicle", required=false) String saveVehicle, @RequestParam(value="saveInsurance", required=false) String saveInsurance) {
 		if (saveVehicle != null) {
@@ -73,26 +85,49 @@ public class CreateController extends BaseController {
 		}
 	}
 	
+	/**
+	 * Zobrazi formular pro vytvoreni automobilu.
+	 * @return
+	 */
 	@RequestMapping(value="/create-car", method=RequestMethod.GET)
 	public ModelAndView showCreateCar() {
 		return new ModelAndView("createCarTile", "createFormBean", new CreateCarFormBean());
 	}
 	
+	/**
+	 * Zobrazi formular pro vytvoreni motocyklu.
+	 * @return
+	 */
 	@RequestMapping(value="/create-motorcycle", method=RequestMethod.GET)
 	public ModelAndView showCreateMotorcycle() {
 		return new ModelAndView("createMotorcycleTile", "createFormBean", new CreateMotorcycleFormBean());
 	}
 	
+	/**
+	 * Zobrazi formular pro vytvoreni nakladniho automobilu.
+	 * @return
+	 */
 	@RequestMapping(value="/create-truck", method=RequestMethod.GET)
 	public ModelAndView showCreateTruck() {
 		return new ModelAndView("createTruckTile", "createFormBean", new CreateTruckFormBean());
 	}
 	
+	/**
+	 * Zobrazi formular pro vytvoreni autobusu.
+	 * @return
+	 */
 	@RequestMapping(value="/create-bus", method=RequestMethod.GET)
 	public ModelAndView showCreateBus() {
 		return new ModelAndView("createBusTile", "createFormBean", new CreateBusFormBean());
 	}
 	
+	/**
+	 * Nastavi parametry automobilu z formulare, ulozi ho do databaze a zobrazi jeho detail.
+	 * @param createFormBean	Formular s udaji vozidla.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return					Presmerovani na detail ulozeneho vozidla.
+	 * @throws ParseException	Pokud neni korektne zadano datum konce platnosti STK.
+	 */
 	@RequestMapping(value="/upsert-car", params="saveVehicle", method=RequestMethod.POST)
 	public ModelAndView upsertCar(@Valid @ModelAttribute(value="createFormBean") CreateCarFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -111,6 +146,13 @@ public class CreateController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-car/" + car.getId(), true));
 	}
 	
+	/**
+	 * Nastavi parametry motocyklu z formulare, ulozi ho do databaze a zobrazi jeho detail.
+	 * @param createFormBean	Formular s udaji vozidla.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return					Presmerovani na detail ulozeneho vozidla.
+	 * @throws ParseException	Pokud neni korektne zadano datum konce platnosti STK.
+	 */
 	@RequestMapping(value="/upsert-motorcycle", params="saveVehicle", method=RequestMethod.POST)
 	public ModelAndView upsertMotorcycle(@Valid @ModelAttribute(value="createFormBean") CreateMotorcycleFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -127,6 +169,13 @@ public class CreateController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-motorcycle/" + motorcycle.getId(), true));
 	}
 	
+	/**
+	 * Nastavi parametry nakladniho automobilu z formulare, ulozi ho do databaze a zobrazi jeho detail.
+	 * @param createFormBean	Formular s udaji vozidla.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return					Presmerovani na detail ulozeneho vozidla.
+	 * @throws ParseException	Pokud neni korektne zadano datum konce platnosti STK.
+	 */
 	@RequestMapping(value="/upsert-truck", params="saveVehicle", method=RequestMethod.POST)
 	public ModelAndView upsertTruck(@Valid @ModelAttribute(value="createFormBean") CreateTruckFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -144,6 +193,13 @@ public class CreateController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-truck/" + truck.getId(), true));
 	}
 	
+	/**
+	 * Nastavi parametry autobusu z formulare, ulozi ho do databaze a zobrazi jeho detail.
+	 * @param createFormBean	Formular s udaji vozidla.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @return					Presmerovani na detail ulozeneho vozidla.
+	 * @throws ParseException	Pokud neni korektne zadano datum konce platnosti STK.
+	 */
 	@RequestMapping(value="/upsert-bus", params="saveVehicle", method=RequestMethod.POST)
 	public ModelAndView upsertBus(@Valid @ModelAttribute(value="createFormBean") CreateBusFormBean createFormBean, BindingResult result) throws ParseException {
 		if (result.hasErrors()) {
@@ -162,6 +218,12 @@ public class CreateController extends BaseController {
 		return new ModelAndView(new RedirectView("/detail-bus/" + bus.getId(), true));
 	}
 	
+	/**
+	 * Z formulare nastavi parametry vozidla, ktere jsou spolecne pro vsechny typy vozidel.
+	 * @param vehicle			Vozidlo, jehoz parametry se vyplnuji z formulare.
+	 * @param createFormBean	Formular, jehoz udaje se ukladaji do objektu vozidla.
+	 * @throws ParseException	Pokud neni korektne zadany datum konce STK (nenastane, protoze se tato chyba odchyti uz ve validaci).
+	 */
 	private void setGeneralAttributes(Vehicle vehicle, CreateFormBean createFormBean) throws ParseException {
 		if (!StringUtils.isEmpty(createFormBean.getVehicle().getId())) {
 			vehicle.setId(Long.valueOf(createFormBean.getVehicle().getId()));
@@ -196,28 +258,66 @@ public class CreateController extends BaseController {
 		vehicle.setOwner(owner);
 	}
 	
+	/**
+	 * Overi, zda se majitel s danym rodnym cislem nachazi v databazi, a pokud ano, jeho udaje se vyplni do formulare.<br>
+	 * Metoda se spousti z obrazovky pro vytvoreni nebo editaci automobilu.
+	 * @param createFormBean	Formular, ze ktereho se bere rodne cislo a do ktereho se pripadne vyplni udaje nalezeneho majitele.
+	 * @param result			Kvuli sdeleni, ze se dany majitel v databazi nansel.
+	 * @return
+	 */
 	@RequestMapping(value="/upsert-car", params="getOwner", method=RequestMethod.POST)
 	public ModelAndView getOwnerCar(@ModelAttribute(value="createFormBean") CreateCarFormBean createFormBean, BindingResult result) {
 		return getOwner("car", createFormBean, result);
 	}
 	
+	/**
+	 * Overi, zda se majitel s danym rodnym cislem nachazi v databazi, a pokud ano, jeho udaje se vyplni do formulare.<br>
+	 * Metoda se spousti z obrazovky pro vytvoreni nebo editaci motocyklu.
+	 * @param createFormBean	Formular, ze ktereho se bere rodne cislo a do ktereho se pripadne vyplni udaje nalezeneho majitele.
+	 * @param result			Kvuli sdeleni, ze se dany majitel v databazi nansel.
+	 * @return
+	 */
 	@RequestMapping(value="/upsert-motorcycle", params="getOwner", method=RequestMethod.POST)
 	public ModelAndView getOwnerMotorcycle(@ModelAttribute(value="createFormBean") CreateMotorcycleFormBean createFormBean, BindingResult result) {
 		return getOwner("motorcycle", createFormBean, result);
 	}
 	
+	/**
+	 * Overi, zda se majitel s danym rodnym cislem nachazi v databazi, a pokud ano, jeho udaje se vyplni do formulare.<br>
+	 * Metoda se spousti z obrazovky pro vytvoreni nebo editaci nakladniho automobilu.
+	 * @param createFormBean	Formular, ze ktereho se bere rodne cislo a do ktereho se pripadne vyplni udaje nalezeneho majitele.
+	 * @param result			Kvuli sdeleni, ze se dany majitel v databazi nansel.
+	 * @return
+	 */
 	@RequestMapping(value="/upsert-truck", params="getOwner", method=RequestMethod.POST)
 	public ModelAndView getOwnerTruck(@ModelAttribute(value="createFormBean") CreateTruckFormBean createFormBean, BindingResult result) {
 		return getOwner("truck", createFormBean, result);
 	}
 	
+	/**
+	 * Overi, zda se majitel s danym rodnym cislem nachazi v databazi, a pokud ano, jeho udaje se vyplni do formulare.<br>
+	 * Metoda se spousti z obrazovky pro vytvoreni nebo editaci autobusu.
+	 * @param createFormBean	Formular, ze ktereho se bere rodne cislo a do ktereho se pripadne vyplni udaje nalezeneho majitele.
+	 * @param result			Kvuli sdeleni, ze se dany majitel v databazi nansel.
+	 * @return
+	 */
 	@RequestMapping(value="/upsert-bus", params="getOwner", method=RequestMethod.POST)
 	public ModelAndView getOwnerBus(@ModelAttribute(value="createFormBean") CreateBusFormBean createFormBean, BindingResult result) {
 		return getOwner("bus", createFormBean, result);
 	}
 	
+	/**
+	 * Pokusi se najit v databazi majitele s danym rodnym cislem.<br>
+	 * Pokud neni odpovidajici majitel nalezen, pole s rodnym cislem zcervena a zobrazi se validacni hlaska.<br>
+	 * Pokud je majitel nalezen, naplni se formbeana jeho udaji a tyto udaji se zobrazi.
+	 * @param vehicleType		Kvuli zobrazeni spravne obrazovky (metoda se spousti z obrazovky pro vytvoreni nebo editaci vsech typu vozidel).
+	 * @param createFormBean	Formular, ze ktereho se bere rodne cislo a do ktereho se pripadne vyplni udaje nalezeneho majitele.
+	 * @param result			Kvuli sdeleni, ze se dany majitel v databazi nansel.
+	 * @return
+	 */
 	private ModelAndView getOwner(String vehicleType, CreateFormBean createFormBean, BindingResult result) {
 		Owner owner = ownerService.getOwnerByBCN(createFormBean.getOwner().getBirthCertificateNumber());
+		
 		if (owner == null) {
 			result.rejectValue("owner.birthCertificateNumber", "error.noSuchOwner");
 		} else {

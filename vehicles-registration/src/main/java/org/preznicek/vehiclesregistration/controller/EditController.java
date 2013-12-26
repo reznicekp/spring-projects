@@ -38,6 +38,12 @@ public class EditController extends BaseController {
 	@Autowired
 	private VehicleService vehicleService;
 	
+	/**
+	 * Na zaklade ID v <code>detailFormBean</code> z databaze dotahne detail automobilu a tato data 
+	 * zobrazi v editovatelnem formulari.
+	 * @param detailFormBean	Formular pro upravu udaju vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/edit-car", method=RequestMethod.GET)
 	public ModelAndView showEditCar(@ModelAttribute(value="detailCarFormBean") CreateCarFormBean detailFormBean) {
 		Car car = (Car) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Car.class);
@@ -56,6 +62,12 @@ public class EditController extends BaseController {
 		return new ModelAndView("createCarTile", "createFormBean", createFormBean);
 	}
 	
+	/**
+	 * Na zaklade ID v <code>detailFormBean</code> z databaze dotahne detail motocyklu a tato data 
+	 * zobrazi v editovatelnem formulari.
+	 * @param detailFormBean	Formular pro upravu udaju vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/edit-motorcycle", method=RequestMethod.GET)
 	public ModelAndView showEditMotorcycle(@ModelAttribute(value="detailMotorcycleFormBean") CreateMotorcycleFormBean detailFormBean) {
 		Motorcycle motorcycle = (Motorcycle) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Motorcycle.class);
@@ -72,6 +84,12 @@ public class EditController extends BaseController {
 		return new ModelAndView("createMotorcycleTile", "createFormBean", createFormBean);
 	}
 	
+	/**
+	 * Na zaklade ID v <code>detailFormBean</code> z databaze dotahne detail nakladniho automobilu 
+	 * a tato data zobrazi v editovatelnem formulari.
+	 * @param detailFormBean	Formular pro upravu udaju vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/edit-truck", method=RequestMethod.GET)
 	public ModelAndView showEditTruck(@ModelAttribute(value="detailTruckFormBean") CreateTruckFormBean detailFormBean) {
 		Truck truck = (Truck) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Truck.class);
@@ -89,6 +107,12 @@ public class EditController extends BaseController {
 		return new ModelAndView("createTruckTile", "createFormBean", createFormBean);
 	}
 	
+	/**
+	 * Na zaklade ID v <code>detailFormBean</code> z databaze dotahne detail autobusu a tato data 
+	 * zobrazi v editovatelnem formulari.
+	 * @param detailFormBean	Formular pro upravu udaju vozidla.
+	 * @return
+	 */
 	@RequestMapping(value="/edit-bus", method=RequestMethod.GET)
 	public ModelAndView showEditBus(@ModelAttribute(value="detailBusFormBean") CreateBusFormBean detailFormBean) {
 		Bus bus = (Bus) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Bus.class);
@@ -107,6 +131,12 @@ public class EditController extends BaseController {
 		return new ModelAndView("createBusTile", "createFormBean", createFormBean);
 	}
 	
+	/**
+	 * Na zaklade udaju vozidla vyplni obecne atributy <code>detailFormBean</code> (spolecne pro 
+	 * vsechny typy vozidel).
+	 * @param vehicle			Vozidlo, jehoz udaje se vyplnuji do <code>detailFormBean</code>.
+	 * @param detailFormBean	Editovatelny formular se spolecnymi udaji pro vsechny typy vozidel.
+	 */
 	private void setGeneralAttributes(Vehicle vehicle, CreateFormBean detailFormBean) {
 		VehicleFormBean vehicleFormBean = new VehicleFormBean();
 		vehicleFormBean.setId(String.valueOf(vehicle.getId()));

@@ -8,6 +8,11 @@ import org.preznicek.vehiclesregistration.database.domain.vehicle.Vehicle;
 
 public class Helper {
 
+	/**
+	 * Vrati znacku vozidla nezavisle na jeho typu.
+	 * @param vehicle	Vozidlo, jehoz znacka se zjistuje.
+	 * @return			Znacka vozidla.
+	 */
 	public static String getBrandOfVehicle(Vehicle vehicle) {
 		String brand = null;
 		

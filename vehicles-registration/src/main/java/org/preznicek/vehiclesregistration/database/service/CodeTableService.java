@@ -17,11 +17,21 @@ public class CodeTableService {
 	@Autowired
 	private CodeTableHolder codeTableHolder;
 	
+	/**
+	 * Zavola DAO pro ulozeni dat ciselniku do databaze.
+	 * @param codeTable		Data ukladaneho ciselniku.
+	 */
 	@Transactional
 	public void fillCodeTable(List<? extends CodeTable> codeTable) {
 		codeTableDao.fillCodeTable(codeTable);
 	}
 	
+	/**
+	 * Vrati data daneho ciselniku z <code>codeTableHolder</code>. Pokud tam jeste nejsou ulozena, 
+	 * dotahnou se z databaze a ulozi se do <code>codeTableHolder</code>.
+	 * @param codeTableClass	Trida urcujici ciselnik.
+	 * @return					Data ciselniku.
+	 */
 	@Transactional
 	public List<? extends CodeTable> getCodeTableData(Class<? extends CodeTable> codeTableClass) {
 		List<? extends CodeTable> codeTableData = codeTableHolder.getCodeTableData(codeTableClass);
@@ -34,6 +44,12 @@ public class CodeTableService {
 		return codeTableData;
 	}
 	
+	/**
+	 * Vrati zaznam z ciselniku. Pokud zaznam neni nalezen, vrati <code>null</code>.
+	 * @param codeTableClass	Trida urcujici ciselnik.
+	 * @param code				Kod urcujici zaznam ciselniku.
+	 * @return					Zaznam z ciselniku.
+	 */
 	public CodeTable getCodeTableRow(Class<? extends CodeTable> codeTableClass, Integer code) {
 		List<? extends CodeTable> codeTableData = getCodeTableData(codeTableClass);
 		

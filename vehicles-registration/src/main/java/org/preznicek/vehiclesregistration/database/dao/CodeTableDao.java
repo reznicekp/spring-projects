@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class CodeTableDao extends BaseDao {
 
+	/**
+	 * Ulozi zaznamy ciselniku do databaze.
+	 * @param codeTable		Data ciselniku.
+	 */
 	public void fillCodeTable(List<? extends CodeTable> codeTable) {
 		getSession();
 		
@@ -16,6 +20,11 @@ public class CodeTableDao extends BaseDao {
 		}
 	}
 	
+	/**
+	 * Vrati data z ciselniku.
+	 * @param codeTableName		Trida urcujici ciselnik.
+	 * @return					Data z ciselniku.
+	 */
 	@SuppressWarnings("unchecked")
 	public List<? extends CodeTable> getCodeTableData(Class<? extends CodeTable> codeTableName) {
 		getSession();

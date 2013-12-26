@@ -24,6 +24,11 @@ public class BaseController {
 	@Autowired
 	protected CodeTableService codeTableService;
 	
+	/**
+	 * Metoda se vykonava pred kazdym vykreslenim view (anotace @ModelAttribute). Do modelu prida data 
+	 * z ciselniku, takze jsou vzdy dostupna v JSP - napr. pri plneni comboboxu.
+	 * @param model
+	 */
 	@ModelAttribute
 	public void fillCodeTables(Model model) {
 		if (codeTableService != null) {

@@ -1,43 +1,36 @@
 package org.preznicek.vehiclesregistration.database.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
-import org.hibernate.criterion.Restrictions;
 import org.preznicek.vehiclesregistration.database.domain.Insurance;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class InsuranceDao extends BaseDao {
 
-	@SuppressWarnings("unchecked")
-	public List<Insurance> getInsuranceListByCar(Long idCar) {
-		getSession();
-		
-		Criteria criteria = session.createCriteria(Insurance.class);
-		criteria.add(Restrictions.eq("vehicle.id", idCar));
-		List<Insurance> insuranceList = criteria.list();
-		
-		return insuranceList;
-	}
-	
+	/**
+	 * Ulozi zaznam pojisteni.
+	 * @param insurance		Pojisteni.
+	 */
 	public void upsert(Insurance insurance) {
 		getSession();
-		
 		session.saveOrUpdate(insurance);
 	}
 	
+	/**
+	 * Vrati detail pojisteni podle ID. Pouziva se pri jeho odstraneni.
+	 * @param id	ID pojisteni.
+	 * @return		Detail pojisteni.
+	 */
 	public Insurance getInsuranceById(Long id) {
 		getSession();
-		
-		Insurance insurance = (Insurance) session.get(Insurance.class, id);
-		
-		return insurance;
+		return (Insurance) session.get(Insurance.class, id);
 	}
 	
+	/**
+	 * Odstrani zaznam pojisteni z databaze.
+	 * @param insurance		Pojisteni.
+	 */
 	public void delete(Insurance insurance) {
 		getSession();
-		
 		session.delete(insurance);
 	}
 }

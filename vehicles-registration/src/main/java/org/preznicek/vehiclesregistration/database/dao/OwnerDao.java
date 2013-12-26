@@ -10,6 +10,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class OwnerDao extends BaseDao {
 
+	/**
+	 * Pokusi se najit majitele vozidla podle jeho rodneho cisla. Pokud v databazi takovy majitel neni, 
+	 * vrati <code>null</code>.
+	 * @param birthCertificateNumber
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	public Owner getOwnerByBCN(String birthCertificateNumber) {
 		getSession();

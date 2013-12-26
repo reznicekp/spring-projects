@@ -32,17 +32,32 @@ public class SearchController extends PageableController {
 	@Autowired
 	private VehicleService vehicleService;
 	
+	/**
+	 * Nastaveni validatoru.
+	 * @param binder
+	 */
 	@InitBinder(value="searchFormBean")
 	public void searchBinder(WebDataBinder binder) {
 		binder.setValidator(new SearchValidator());
 	}
 	
+	/**
+	 * Zobrazi formular na vyhledavaci obrazovce pro zadavani vyhledavacich kriterii.
+	 * @return
+	 */
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public ModelAndView showSearch() {
-		SearchFormBean searchFormBean = new SearchFormBean();
-		return new ModelAndView("searchTile", "searchFormBean", searchFormBean);
+		return new ModelAndView("searchTile", "searchFormBean", new SearchFormBean());
 	}
 	
+	/**
+	 * Provede vyhledani vozidel v databazi podle zadanych kriterii a nalezene vysledky zobrazi s ohledem na strankovani.
+	 * @param searchFormBean	Formular s vyhledavacimi kriterii.
+	 * @param result			Kvuli validaci - pokud <code>result</code> obsahuje chyby, prislusna pole se zvyrazni.
+	 * @param request
+	 * @param pageable			Hodnota anotace <code>searchResultFormBeanList</code> je prefixem hidden inputu <code>searchResultFormBeanList_page</code>.
+	 * @return
+	 */
 	@RequestMapping(value="/search", method=RequestMethod.POST)
 	public ModelAndView doSearch(@Valid @ModelAttribute(value="searchFormBean") SearchFormBean searchFormBean, BindingResult result, HttpServletRequest request, @Qualifier(value="searchResultFormBeanList") Pageable pageable) {
 		if (result.hasErrors()) {
@@ -63,6 +78,7 @@ public class SearchController extends PageableController {
 		
 		List<SearchResultFormBean> searchResultList = new ArrayList<SearchResultFormBean>();
 		
+		// mapovani nalezenych vysledku do objektu tridy SearchResultFormBean
 		for (Vehicle vehicle : vehicleList) {
 			SearchResultFormBean searchResult = new SearchResultFormBean();
 			searchResult.setId(String.valueOf(vehicle.getId()));
@@ -77,7 +93,7 @@ public class SearchController extends PageableController {
 		}
 		
 		searchFormBean.setSearchResultFormBeanList(searchResultList);
-		searchFormBean.setSearchResultFormBeanList_page(Integer.valueOf(currentPageNumber));
+		searchFormBean.setSearchResultFormBeanList_page(Integer.valueOf(currentPageNumber));	// nastaveni aktualni stranky do promenne searchResultFormBeanList_page
 		
 		ModelAndView mav = new ModelAndView("searchTile");
 		mav.addAllObjects(pagingButtons);

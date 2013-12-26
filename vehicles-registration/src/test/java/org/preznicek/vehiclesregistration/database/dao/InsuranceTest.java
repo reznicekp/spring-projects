@@ -1,7 +1,6 @@
 package org.preznicek.vehiclesregistration.database.dao;
 
 import java.util.Date;
-import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,18 +31,6 @@ public class InsuranceTest {
 	@Before
 	public void beforeEachTestMethod() {
 //		System.out.println("test in progress");
-	}
-	
-	@Test
-	@Transactional
-	public void testGetInsuranceListByCar() {
-		Long idCar = Long.valueOf(1);
-		
-		List<Insurance> insuranceList = insuranceService.getInsuranceListByCar(idCar);
-		Assert.assertNotNull(insuranceList);
-		for (Insurance insurance : insuranceList) {
-			Assert.assertNotNull(insurance);
-		}
 	}
 	
 	@Test

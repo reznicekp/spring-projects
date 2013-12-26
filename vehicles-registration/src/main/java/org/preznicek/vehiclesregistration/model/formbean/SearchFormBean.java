@@ -7,7 +7,7 @@ public class SearchFormBean extends BaseFormBean {
 	private SearchVehicleFormBean searchVehicleFormBean;
 	private SearchOwnerFormBean searchOwnerFormBean;
 	private List<SearchResultFormBean> searchResultFormBeanList;
-	private Integer searchResultFormBeanList_page;
+	private Integer searchResultFormBeanList_page;		// predani aktualni stranky do JSP
 	
 	public SearchVehicleFormBean getSearchVehicleFormBean() {
 		return searchVehicleFormBean;

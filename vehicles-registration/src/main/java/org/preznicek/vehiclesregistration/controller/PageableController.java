@@ -13,6 +13,7 @@ public class PageableController extends BaseController {
 	/**
 	 * Zajistuje spravne zobrazeni/skryti strankovacich tlacitek.
 	 * @param prefix			Oznacuje tabulku, ke ktere strankovani patri (uplatni se zejmena pokud je na strance vice strankovacich tabulek).
+	 * @param currentPageNumber	Cislo aktualni stranky.
 	 * @param itemTotalCount	Celkovy pocet polozek v databazi.
 	 * @return					<code>Boolean</code> promenne v instanci tridy <code>HashMap</code>.
 	 */
@@ -41,6 +42,12 @@ public class PageableController extends BaseController {
 		return map;
 	}
 	
+	/**
+	 * Vrati cislo aktualni stranky ve strankovani.
+	 * @param request		Request pro ziskani informace, zda uzivatel stiskl tlacitko Previous nebo Next.
+	 * @param pageable		Objekt s informacemi o strankovani.
+	 * @return				Cislo aktualni stranky.
+	 */
 	protected int getCurrentPageNumber(HttpServletRequest request, Pageable pageable) {
 		if (request.getParameter("prev") != null) {
 			return Math.max(1, pageable.getPageNumber() + 1 - 1);
