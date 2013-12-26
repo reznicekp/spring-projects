@@ -6,10 +6,6 @@ import javax.validation.Valid;
 
 import org.preznicek.vehiclesregistration.database.domain.Insurance;
 import org.preznicek.vehiclesregistration.database.domain.codetable.InsuranceCompanyCT;
-import org.preznicek.vehiclesregistration.database.domain.vehicle.Bus;
-import org.preznicek.vehiclesregistration.database.domain.vehicle.Car;
-import org.preznicek.vehiclesregistration.database.domain.vehicle.Motorcycle;
-import org.preznicek.vehiclesregistration.database.domain.vehicle.Truck;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Vehicle;
 import org.preznicek.vehiclesregistration.database.service.InsuranceService;
 import org.preznicek.vehiclesregistration.database.service.VehicleService;
@@ -49,7 +45,7 @@ public class InsuranceController extends BaseController {
 			return new ModelAndView("createCarTile");
 		}
 		
-		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()), Car.class);
+		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()));
 		
 		insuranceService.upsert(setInsuranceAttributes(vehicle, createFormBean));
 		
@@ -69,7 +65,7 @@ public class InsuranceController extends BaseController {
 			return new ModelAndView("createMotorcycleTile");
 		}
 		
-		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()), Motorcycle.class);
+		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()));
 		
 		insuranceService.upsert(setInsuranceAttributes(vehicle, createFormBean));
 		
@@ -89,7 +85,7 @@ public class InsuranceController extends BaseController {
 			return new ModelAndView("createTruckTile");
 		}
 		
-		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()), Truck.class);
+		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()));
 		
 		insuranceService.upsert(setInsuranceAttributes(vehicle, createFormBean));
 		
@@ -109,7 +105,7 @@ public class InsuranceController extends BaseController {
 			return new ModelAndView("createBusTile");
 		}
 		
-		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()), Bus.class);
+		Vehicle vehicle = vehicleService.getVehicleById(Long.valueOf(createFormBean.getVehicle().getId()));
 		
 		insuranceService.upsert(setInsuranceAttributes(vehicle, createFormBean));
 		

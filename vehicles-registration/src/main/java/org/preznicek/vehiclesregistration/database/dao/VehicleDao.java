@@ -119,11 +119,10 @@ public class VehicleDao extends BaseDao {
 	/**
 	 * Vrati detail vozidla podle jeho ID.
 	 * @param id		ID vozidla.
-	 * @param clazz		Trida urcujici typ vozidla.
 	 * @return			Detail vozidla.
 	 */
-	public Vehicle getVehicleById(Long id, Class<? extends Vehicle> clazz) {
+	public Vehicle getVehicleById(Long id) {
 		getSession();
-		return (Vehicle) session.get(clazz, id);
+		return (Vehicle) session.get(Vehicle.class, id);
 	}
 }

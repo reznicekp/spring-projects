@@ -45,7 +45,7 @@ public class DetailController extends BaseController {
 	 */
 	@RequestMapping(value="/detail-car/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailCar(@PathVariable(value="id") Long id) {
-		Car car = (Car) vehicleService.getVehicleById(id, Car.class);
+		Car car = (Car) vehicleService.getVehicleById(id);
 		
 		CreateCarFormBean detailFormBean = new CreateCarFormBean();
 		setGeneralAttributes(car, detailFormBean);
@@ -68,7 +68,7 @@ public class DetailController extends BaseController {
 	 */
 	@RequestMapping(value="/detail-motorcycle/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailMotorcycle(@PathVariable(value="id") Long id) {
-		Motorcycle motorcycle = (Motorcycle) vehicleService.getVehicleById(id, Motorcycle.class);
+		Motorcycle motorcycle = (Motorcycle) vehicleService.getVehicleById(id);
 		
 		CreateMotorcycleFormBean detailFormBean = new CreateMotorcycleFormBean();
 		setGeneralAttributes(motorcycle, detailFormBean);
@@ -89,7 +89,7 @@ public class DetailController extends BaseController {
 	 */
 	@RequestMapping(value="/detail-truck/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailTruck(@PathVariable(value="id") Long id) {
-		Truck truck = (Truck) vehicleService.getVehicleById(id, Truck.class);
+		Truck truck = (Truck) vehicleService.getVehicleById(id);
 		
 		CreateTruckFormBean detailFormBean = new CreateTruckFormBean();
 		setGeneralAttributes(truck, detailFormBean);
@@ -111,7 +111,7 @@ public class DetailController extends BaseController {
 	 */
 	@RequestMapping(value="/detail-bus/{id}", method=RequestMethod.GET)
 	public ModelAndView showDetailBus(@PathVariable(value="id") Long id) {
-		Bus bus = (Bus) vehicleService.getVehicleById(id, Bus.class);
+		Bus bus = (Bus) vehicleService.getVehicleById(id);
 		
 		CreateBusFormBean detailFormBean = new CreateBusFormBean();
 		setGeneralAttributes(bus, detailFormBean);

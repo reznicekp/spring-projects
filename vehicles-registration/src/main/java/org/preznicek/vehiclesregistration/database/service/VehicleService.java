@@ -27,7 +27,7 @@ public class VehicleService {
 	}
 	
 	@Transactional(readOnly=true)
-	public Vehicle getVehicleById(Long id, Class<? extends Vehicle> clazz) {
-		return vehicleDao.getVehicleById(id, clazz);
+	public Vehicle getVehicleById(Long id) {
+		return vehicleDao.getVehicleById(id);
 	}
 }

@@ -67,7 +67,7 @@ public final class bugs_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("<ol>\r\n");
-      out.write("\t<li>komentare a dokumentace</li>\r\n");
+      out.write("\t<li>VehicleDao.getVehicleById() bez tridy - jen podle ID</li>\r\n");
       out.write("\t<li>zkusit vyuzit dependency injection pri vytvareni objektu Create*FormBean</li>\r\n");
       out.write("\t<li>ajax</li>\r\n");
       out.write("</ol>\r\n");

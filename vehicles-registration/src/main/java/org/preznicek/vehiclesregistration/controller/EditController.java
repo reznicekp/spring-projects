@@ -46,7 +46,7 @@ public class EditController extends BaseController {
 	 */
 	@RequestMapping(value="/edit-car", method=RequestMethod.GET)
 	public ModelAndView showEditCar(@ModelAttribute(value="detailCarFormBean") CreateCarFormBean detailFormBean) {
-		Car car = (Car) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Car.class);
+		Car car = (Car) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()));
 		
 		CreateCarFormBean createFormBean = new CreateCarFormBean();
 		setGeneralAttributes(car, createFormBean);
@@ -70,7 +70,7 @@ public class EditController extends BaseController {
 	 */
 	@RequestMapping(value="/edit-motorcycle", method=RequestMethod.GET)
 	public ModelAndView showEditMotorcycle(@ModelAttribute(value="detailMotorcycleFormBean") CreateMotorcycleFormBean detailFormBean) {
-		Motorcycle motorcycle = (Motorcycle) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Motorcycle.class);
+		Motorcycle motorcycle = (Motorcycle) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()));
 		
 		CreateMotorcycleFormBean createFormBean = new CreateMotorcycleFormBean();
 		setGeneralAttributes(motorcycle, createFormBean);
@@ -92,7 +92,7 @@ public class EditController extends BaseController {
 	 */
 	@RequestMapping(value="/edit-truck", method=RequestMethod.GET)
 	public ModelAndView showEditTruck(@ModelAttribute(value="detailTruckFormBean") CreateTruckFormBean detailFormBean) {
-		Truck truck = (Truck) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Truck.class);
+		Truck truck = (Truck) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()));
 		
 		CreateTruckFormBean createFormBean = new CreateTruckFormBean();
 		setGeneralAttributes(truck, createFormBean);
@@ -115,7 +115,7 @@ public class EditController extends BaseController {
 	 */
 	@RequestMapping(value="/edit-bus", method=RequestMethod.GET)
 	public ModelAndView showEditBus(@ModelAttribute(value="detailBusFormBean") CreateBusFormBean detailFormBean) {
-		Bus bus = (Bus) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()), Bus.class);
+		Bus bus = (Bus) vehicleService.getVehicleById(Long.valueOf(detailFormBean.getVehicle().getId()));
 		
 		CreateBusFormBean createFormBean = new CreateBusFormBean();
 		setGeneralAttributes(bus, createFormBean);

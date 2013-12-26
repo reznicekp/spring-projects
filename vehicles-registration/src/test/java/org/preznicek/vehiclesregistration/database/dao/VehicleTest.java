@@ -83,7 +83,7 @@ public class VehicleTest {
 	public void testGetVehicleById() {
 		Long idCar = Long.valueOf(1);
 		
-		Car car = (Car) vehicleService.getVehicleById(idCar, Car.class);
+		Car car = (Car) vehicleService.getVehicleById(idCar);
 		Assert.assertNotNull(car);
 	}
 }
