@@ -11,12 +11,12 @@ body {
 	width: 1000px;
 }
 
-#header #titles {
+header #titles {
 	float: left;
 	width: 50%;
 }
 
-#header #links {
+header #links {
 	float: right;
 	margin-top: 30px;
 	text-align: right;
@@ -31,18 +31,18 @@ h2 {
 	margin-left: 30px;
 }
 
-#menu {
+nav {
 	float: left;
 	line-height: 20px;
 	padding: 20px 0;
 	width: 25%;
 }
 
-#menu ul {
+nav ul {
 	list-style-type: none;
 }
 
-#content {
+article {
 	float: right;
 	padding: 20px 0;
 	width: 73%;
@@ -52,7 +52,7 @@ p {
 	line-height: 30px;
 }
 
-#footer {
+footer {
 	border-top: 1px solid #444;
 	clear: both;
 	font-size: 12px;

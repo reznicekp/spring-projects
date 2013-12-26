@@ -80,38 +80,38 @@ public final class basicLayout_jsp extends org.apache.jasper.runtime.HttpJspBase
  LoggedUser loggedUser = (LoggedUser) session.getAttribute(Constants.SessionKey.LOGGED_USER); 
       out.write('\r');
       out.write('\n');
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\n");
-      out.write("   \"http://www.w3.org/TR/html4/loose.dtd\">\n");
-      out.write("\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE HTML>\r\n");
+      out.write("\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print( request.getContextPath() );
-      out.write("/css/default.css\">\n");
+      out.write("/css/default.css\">\r\n");
       out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"");
       out.print( request.getContextPath() );
-      out.write("/css/validation.css\">\n");
+      out.write("/css/validation.css\">\r\n");
       out.write("        <script type=\"text/javascript\" src=\"");
       out.print( request.getContextPath() );
-      out.write("/js/default.js\"></script>\n");
+      out.write("/js/default.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"");
       out.print( request.getContextPath() );
-      out.write("/js/jquery-1.10.2.min.js\"></script>\n");
-      out.write("        \n");
-      out.write("        <script> \n");
+      out.write("/js/jquery-1.10.2.min.js\"></script>\r\n");
+      out.write("        \r\n");
+      out.write("        <script> \r\n");
       out.write("\t\t\tvar PAGING = ");
       out.print( Constants.PAGING );
-      out.write(";\n");
-      out.write("\t\t</script>\n");
-      out.write("        \n");
+      out.write(";\r\n");
+      out.write("\t\t</script>\r\n");
+      out.write("        \r\n");
       out.write("        ");
       if (_jspx_meth_tiles_005fimportAttribute_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("        <title>");
       if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
@@ -120,86 +120,86 @@ public final class basicLayout_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write(' ');
       if (_jspx_meth_spring_005fmessage_005f1(_jspx_page_context))
         return;
-      out.write("</title>\n");
-      out.write("    </head>\n");
-      out.write("    \n");
-      out.write("    <body>\n");
-      out.write("    \t<div id=\"header\">\n");
-      out.write("    \t\t<div id=\"titles\">\n");
+      out.write("</title>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    \r\n");
+      out.write("    <body>\r\n");
+      out.write("    \t<header>\r\n");
+      out.write("    \t\t<div id=\"titles\">\r\n");
       out.write("\t\t\t\t<h1>");
       if (_jspx_meth_spring_005fmessage_005f2(_jspx_page_context))
         return;
-      out.write("</h1>\n");
+      out.write("</h1>\r\n");
       out.write("\t\t\t\t<h2>");
       if (_jspx_meth_spring_005fmessage_005f3(_jspx_page_context))
         return;
-      out.write("</h2>\n");
-      out.write("\t\t\t</div>\n");
-      out.write("\t\t\t\n");
-      out.write("\t\t\t<div id=\"links\">\n");
+      out.write("</h2>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t\t<div id=\"links\">\r\n");
       out.write("\t\t\t\t");
       if (_jspx_meth_c_005furl_005f0(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\t\t\t");
       if (_jspx_meth_c_005furl_005f1(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\t\t\t<a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${urlLocaleEn}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write("\">en</a> | <a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${urlLocaleCz}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
-      out.write("\">cz</a>\n");
-      out.write("\t\t\t\t\n");
-      out.write("\t\t\t\t<br>\n");
-      out.write("\t\t\t\t\n");
+      out.write("\">cz</a>\r\n");
+      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t\t<br>\r\n");
+      out.write("\t\t\t\t\r\n");
       out.write("\t\t\t\t");
  if (loggedUser != null) { 
-      out.write("\n");
-      out.write("\t\t\t\t\t<br>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t<br>\r\n");
       out.write("\t\t\t\t\t");
       if (_jspx_meth_c_005fout_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("\t\t\t\t\t<br>\n");
+      out.write("\r\n");
+      out.write("\t\t\t\t\t<br>\r\n");
       out.write("\t\t\t\t\t");
       if (_jspx_meth_c_005furl_005f2(_jspx_page_context))
         return;
-      out.write("\n");
+      out.write("\r\n");
       out.write("\t\t\t\t\t<a href=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${urlLogout}", java.lang.String.class, (PageContext)_jspx_page_context, null, false));
       out.write('"');
       out.write('>');
       if (_jspx_meth_spring_005fmessage_005f4(_jspx_page_context))
         return;
-      out.write("</a>\n");
+      out.write("</a>\r\n");
       out.write("\t\t\t\t");
  } 
-      out.write("\n");
-      out.write("\t\t\t</div>\n");
-      out.write("    \t</div>\n");
-      out.write("    \t\n");
-      out.write("    \t<br class=\"clear\">\n");
-      out.write("    \t\n");
-      out.write("    \t<div id=\"menu\">\n");
+      out.write("\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("    \t</header>\r\n");
+      out.write("    \t\r\n");
+      out.write("    \t<br class=\"clear\">\r\n");
+      out.write("    \t\r\n");
+      out.write("    \t<nav>\r\n");
       out.write("    \t\t");
       if (_jspx_meth_tiles_005finsertAttribute_005f0(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("    \t</div>\n");
-      out.write("    \t\n");
-      out.write("    \t<div id=\"content\">\n");
+      out.write("\r\n");
+      out.write("    \t</nav>\r\n");
+      out.write("    \t\r\n");
+      out.write("    \t<article>\r\n");
       out.write("    \t\t");
       if (_jspx_meth_tiles_005finsertAttribute_005f1(_jspx_page_context))
         return;
-      out.write("\n");
-      out.write("    \t</div>\n");
-      out.write("    \t\n");
-      out.write("    \t<div id=\"footer\">\n");
-      out.write("    \t\t<p>Copyright 2013 &#169; Pavel Reznicek. All rights reserved.</p>\n");
-      out.write("    \t</div>\n");
-      out.write("    </body>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("    \t</article>\r\n");
+      out.write("    \t\r\n");
+      out.write("    \t<footer>\r\n");
+      out.write("    \t\t<p>Copyright 2013 &#169; Pavel Reznicek. All rights reserved.</p>\r\n");
+      out.write("    \t</footer>\r\n");
+      out.write("    </body>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
