@@ -6,12 +6,16 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCarCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.FuelCT;
 
 @Entity
 @Table(name="vehicle_car")
 public class Car extends Vehicle {
 
+	@ManyToOne(fetch=FetchType.EAGER, optional=true)
+	private BrandCarCT brand;
+	
 	@Column(name="sitting_places_count", nullable=false)
 	private Integer sittingPlacesCount;
 	
@@ -25,6 +29,12 @@ public class Car extends Vehicle {
 	
 	
 	
+	public BrandCarCT getBrand() {
+		return brand;
+	}
+	public void setBrand(BrandCarCT brand) {
+		this.brand = brand;
+	}
 	public Integer getSittingPlacesCount() {
 		return sittingPlacesCount;
 	}

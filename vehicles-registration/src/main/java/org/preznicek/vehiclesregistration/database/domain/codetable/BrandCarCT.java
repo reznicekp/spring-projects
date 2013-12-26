@@ -4,14 +4,14 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ct_brand")
-public class BrandCT extends CodeTable {
+@Table(name="ct_brand_car")
+public class BrandCarCT extends CodeTable {
 
-	public BrandCT() {
+	public BrandCarCT() {
 		super();
 	}
 	
-	public BrandCT(Integer code, String value, String description) {
+	public BrandCarCT(Integer code, String value, String description) {
 		super(code, value, description);
 	}
 }

@@ -51,7 +51,7 @@ public class VehicleTest {
 		car.setMotEnd(new Date());
 		car.setWeight(Integer.valueOf(1000));
 		car.setVehicleType(VehicleType.CAR.toString());
-		car.setFuel(new FuelCT(Integer.valueOf(5001), "", ""));
+		car.setFuel(new FuelCT(Integer.valueOf(3001), "", ""));
 		car.setSittingPlacesCount(Integer.valueOf(5));
 		car.setVolume(Integer.valueOf(1200));
 		

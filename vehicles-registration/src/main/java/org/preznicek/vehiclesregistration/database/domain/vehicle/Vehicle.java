@@ -20,7 +20,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.preznicek.vehiclesregistration.database.domain.Insurance;
 import org.preznicek.vehiclesregistration.database.domain.Owner;
-import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCarCT;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -36,19 +36,16 @@ public class Vehicle {
 	@Column(name="plate_number", length=9, nullable=false)
 	private String plateNumber;	// SPZ
 	
-	@ManyToOne(fetch=FetchType.EAGER, optional=true)
-	private BrandCT brand;
-	
 	@Column(name="other_brand_name", length=50)
 	private String otherBrandName;
 	
 	@Column(length=50, nullable=false)
 	private String model;
 	
-	@Column(nullable=false)
+	@Column(name="making_year", nullable=false)
 	private Integer makingYear;
 	
-	@Column(name="mot_to")
+	@Column(name="mot_end")
 	@Temporal(TemporalType.DATE)
 	private Date motEnd;	// Ministry of Transport (STK)
 	
@@ -82,12 +79,6 @@ public class Vehicle {
 	}
 	public void setPlateNumber(String plateNumber) {
 		this.plateNumber = plateNumber;
-	}
-	public BrandCT getBrand() {
-		return brand;
-	}
-	public void setBrand(BrandCT brand) {
-		this.brand = brand;
 	}
 	public String getOtherBrandName() {
 		return otherBrandName;

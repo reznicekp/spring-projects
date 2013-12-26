@@ -8,7 +8,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkBusCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkTruckCT;
-import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandBusCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCarCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandMotorcycleCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandTruckCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.CodeTable;
 import org.preznicek.vehiclesregistration.database.domain.codetable.FuelCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.InsuranceCompanyCT;
@@ -51,8 +54,29 @@ public class CodeTableTest {
 	
 	@Test
 	@Transactional
-	public void testBrandCT() {
-		List<? extends CodeTable> codeTableData = codeTableService.getCodeTableData(BrandCT.class);
+	public void testBrandCarCT() {
+		List<? extends CodeTable> codeTableData = codeTableService.getCodeTableData(BrandCarCT.class);
+		testCodeTable(codeTableData);
+	}
+	
+	@Test
+	@Transactional
+	public void testBrandMotorcycleCT() {
+		List<? extends CodeTable> codeTableData = codeTableService.getCodeTableData(BrandMotorcycleCT.class);
+		testCodeTable(codeTableData);
+	}
+	
+	@Test
+	@Transactional
+	public void testBrandBusCT() {
+		List<? extends CodeTable> codeTableData = codeTableService.getCodeTableData(BrandBusCT.class);
+		testCodeTable(codeTableData);
+	}
+	
+	@Test
+	@Transactional
+	public void testBrandTruckCT() {
+		List<? extends CodeTable> codeTableData = codeTableService.getCodeTableData(BrandTruckCT.class);
 		testCodeTable(codeTableData);
 	}
 	

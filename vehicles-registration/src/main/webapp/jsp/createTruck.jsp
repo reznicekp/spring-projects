@@ -4,7 +4,18 @@
 	<fieldset>
 		<legend><spring:message code="menu.truck"/></legend>
 		
-		<tiles:insertTemplate template="createVehicle.jsp"/>
+		<tiles:insertTemplate template="createVehicle1.jsp"/>
+		
+		<spring:nestedPath path="vehicle">
+			<form:label path="brand" cssErrorClass="error"><spring:message code="brand"/> *</form:label>
+			<form:select path="brand" cssErrorClass="error">
+				<form:option value="" label="---"/>
+				<form:options items="${brandTruck}" itemLabel="value" itemValue="code"/>
+			</form:select>
+			<form:errors path="brand" cssClass="error"/>
+		</spring:nestedPath>
+		
+		<tiles:insertTemplate template="createVehicle2.jsp"/>
 		
 		<br>
 		<spring:nestedPath path="truck">

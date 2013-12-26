@@ -4,7 +4,10 @@ import java.text.SimpleDateFormat;
 
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkBusCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkTruckCT;
-import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandBusCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCarCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandMotorcycleCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandTruckCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.FuelCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.InsuranceCompanyCT;
 import org.preznicek.vehiclesregistration.database.service.CodeTableService;
@@ -24,7 +27,10 @@ public class BaseController {
 	@ModelAttribute
 	public void fillCodeTables(Model model) {
 		if (codeTableService != null) {
-			model.addAttribute("brand", codeTableService.getCodeTableData(BrandCT.class));
+			model.addAttribute("brandCar", codeTableService.getCodeTableData(BrandCarCT.class));
+			model.addAttribute("brandMotorcycle", codeTableService.getCodeTableData(BrandMotorcycleCT.class));
+			model.addAttribute("brandTruck", codeTableService.getCodeTableData(BrandTruckCT.class));
+			model.addAttribute("brandBus", codeTableService.getCodeTableData(BrandBusCT.class));
 			model.addAttribute("fuel", codeTableService.getCodeTableData(FuelCT.class));
 			model.addAttribute("bodyworkBus", codeTableService.getCodeTableData(BodyworkBusCT.class));
 			model.addAttribute("bodyworkTruck", codeTableService.getCodeTableData(BodyworkTruckCT.class));

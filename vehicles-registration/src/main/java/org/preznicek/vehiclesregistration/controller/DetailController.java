@@ -24,6 +24,7 @@ import org.preznicek.vehiclesregistration.model.formbean.OwnerFormBean;
 import org.preznicek.vehiclesregistration.model.formbean.SearchResultFormBean;
 import org.preznicek.vehiclesregistration.model.formbean.TruckFormBean;
 import org.preznicek.vehiclesregistration.model.formbean.VehicleFormBean;
+import org.preznicek.vehiclesregistration.utils.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,6 +51,7 @@ public class DetailController extends BaseController {
 		carFormBean.setFuel(car.getFuel().getValue());
 		
 		detailFormBean.setCar(carFormBean);
+		detailFormBean.getVehicle().setBrand(car.getBrand() != null ? car.getBrand().getValue() : car.getOtherBrandName());
 		
 		return new ModelAndView("detailCarTile", "detailFormBean", detailFormBean);
 	}
@@ -65,6 +67,7 @@ public class DetailController extends BaseController {
 		motorcycleFormBean.setVolume(String.valueOf(motorcycle.getVolume()));
 		
 		detailFormBean.setMotorcycle(motorcycleFormBean);
+		detailFormBean.getVehicle().setBrand(motorcycle.getBrand() != null ? motorcycle.getBrand().getValue() : motorcycle.getOtherBrandName());
 		
 		return new ModelAndView("detailMotorcycleTile", "detailFormBean", detailFormBean);
 	}
@@ -81,6 +84,7 @@ public class DetailController extends BaseController {
 		truckFormBean.setBodywork(truck.getBodywork().getValue());
 		
 		detailFormBean.setTruck(truckFormBean);
+		detailFormBean.getVehicle().setBrand(truck.getBrand() != null ? truck.getBrand().getValue() : truck.getOtherBrandName());
 		
 		return new ModelAndView("detailTruckTile", "detailFormBean", detailFormBean);
 	}
@@ -98,6 +102,7 @@ public class DetailController extends BaseController {
 		busFormBean.setVolume(String.valueOf(bus.getVolume()));
 		
 		detailFormBean.setBus(busFormBean);
+		detailFormBean.getVehicle().setBrand(bus.getBrand() != null ? bus.getBrand().getValue() : bus.getOtherBrandName());
 		
 		return new ModelAndView("detailBusTile", "detailFormBean", detailFormBean);
 	}
@@ -106,7 +111,6 @@ public class DetailController extends BaseController {
 		VehicleFormBean vehicleFormBean = new VehicleFormBean();
 		vehicleFormBean.setId(String.valueOf(vehicle.getId()));
 		vehicleFormBean.setPlateNumber(vehicle.getPlateNumber());
-		vehicleFormBean.setBrand(vehicle.getBrand() != null ? vehicle.getBrand().getValue() : vehicle.getOtherBrandName());
 		vehicleFormBean.setModel(vehicle.getModel());
 		vehicleFormBean.setMakingYear(String.valueOf(vehicle.getMakingYear()));
 		vehicleFormBean.setMotEnd(vehicle.getMotEnd() != null ? motDateFormat.format(vehicle.getMotEnd()) : "");
@@ -131,7 +135,7 @@ public class DetailController extends BaseController {
 			searchResult.setId(String.valueOf(vehicleOfOwner.getId()));
 			searchResult.setVehicleType(vehicleOfOwner.getVehicleType());
 			searchResult.setPlateNumber(vehicleOfOwner.getPlateNumber());
-			searchResult.setBrandAndModel((vehicleOfOwner.getBrand() != null ? vehicleOfOwner.getBrand().getValue() : vehicleOfOwner.getOtherBrandName()) + " " + vehicleOfOwner.getModel());
+			searchResult.setBrandAndModel(Helper.getBrandOfVehicle(vehicleOfOwner) + " " + vehicleOfOwner.getModel());
 			searchResult.setMakingYear(String.valueOf(vehicleOfOwner.getMakingYear()));
 			searchResult.setMotEnd(vehicleOfOwner.getMotEnd() != null ? motDateFormat.format(vehicleOfOwner.getMotEnd()) : "");
 			

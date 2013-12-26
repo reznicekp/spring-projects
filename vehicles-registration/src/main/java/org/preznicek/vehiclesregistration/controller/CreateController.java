@@ -10,7 +10,10 @@ import org.apache.commons.lang3.text.WordUtils;
 import org.preznicek.vehiclesregistration.database.domain.Owner;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkBusCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkTruckCT;
-import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandBusCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandCarCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandMotorcycleCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandTruckCT;
 import org.preznicek.vehiclesregistration.database.domain.codetable.FuelCT;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Bus;
 import org.preznicek.vehiclesregistration.database.domain.vehicle.Car;
@@ -30,6 +33,7 @@ import org.preznicek.vehiclesregistration.model.formbean.validator.CarValidator;
 import org.preznicek.vehiclesregistration.model.formbean.validator.InsuranceValidator;
 import org.preznicek.vehiclesregistration.model.formbean.validator.MotorcycleValidator;
 import org.preznicek.vehiclesregistration.model.formbean.validator.TruckValidator;
+import org.preznicek.vehiclesregistration.utils.Helper;
 import org.preznicek.vehiclesregistration.utils.VehicleType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,6 +101,7 @@ public class CreateController extends BaseController {
 		
 		Car car = new Car();
 		setGeneralAttributes(car, createFormBean);
+		car.setBrand((BrandCarCT) codeTableService.getCodeTableRow(BrandCarCT.class, Integer.valueOf(createFormBean.getVehicle().getBrand())));
 		car.setSittingPlacesCount(Integer.valueOf(createFormBean.getCar().getSittingPlacesCount()));
 		car.setVolume(Integer.valueOf(createFormBean.getCar().getVolume()));
 		car.setFuel((FuelCT) codeTableService.getCodeTableRow(FuelCT.class, Integer.valueOf(createFormBean.getCar().getFuel())));
@@ -114,6 +119,7 @@ public class CreateController extends BaseController {
 		
 		Motorcycle motorcycle = new Motorcycle();
 		setGeneralAttributes(motorcycle, createFormBean);
+		motorcycle.setBrand((BrandMotorcycleCT) codeTableService.getCodeTableRow(BrandMotorcycleCT.class, Integer.valueOf(createFormBean.getVehicle().getBrand())));
 		motorcycle.setVolume(Integer.valueOf(createFormBean.getMotorcycle().getVolume()));
 		
 		vehicleService.upsert(motorcycle);
@@ -129,6 +135,7 @@ public class CreateController extends BaseController {
 		
 		Truck truck = new Truck();
 		setGeneralAttributes(truck, createFormBean);
+		truck.setBrand((BrandTruckCT) codeTableService.getCodeTableRow(BrandTruckCT.class, Integer.valueOf(createFormBean.getVehicle().getBrand())));
 		truck.setVolume(Integer.valueOf(createFormBean.getTruck().getVolume()));
 		truck.setBodywork((BodyworkTruckCT) codeTableService.getCodeTableRow(BodyworkTruckCT.class, Integer.valueOf(createFormBean.getTruck().getBodywork())));
 		
@@ -145,6 +152,7 @@ public class CreateController extends BaseController {
 		
 		Bus bus = new Bus();
 		setGeneralAttributes(bus, createFormBean);
+		bus.setBrand((BrandBusCT) codeTableService.getCodeTableRow(BrandBusCT.class, Integer.valueOf(createFormBean.getVehicle().getBrand())));
 		bus.setBodywork((BodyworkBusCT) codeTableService.getCodeTableRow(BodyworkBusCT.class, Integer.valueOf(createFormBean.getBus().getBodywork())));
 		bus.setSittingPlacesCount(Integer.valueOf(createFormBean.getBus().getSittingPlacesCount()));
 		bus.setVolume(Integer.valueOf(createFormBean.getBus().getVolume()));
@@ -168,12 +176,11 @@ public class CreateController extends BaseController {
 			vehicle.setVehicleType(VehicleType.BUS.toString());
 		}
 		vehicle.setPlateNumber(createFormBean.getVehicle().getPlateNumber());
-		vehicle.setBrand((BrandCT) codeTableService.getCodeTableRow(BrandCT.class, Integer.valueOf(createFormBean.getVehicle().getBrand())));
 		vehicle.setOtherBrandName(createFormBean.getVehicle().getOtherBrandName());
 		vehicle.setModel(createFormBean.getVehicle().getModel());
 		vehicle.setMakingYear(Integer.valueOf(createFormBean.getVehicle().getMakingYear()));
-		vehicle.setMotEnd(motDateFormat.parse(createFormBean.getVehicle().getMotEnd()));
-		vehicle.setWeight(Integer.valueOf(createFormBean.getVehicle().getWeight()));
+		vehicle.setMotEnd(!StringUtils.isEmpty(createFormBean.getVehicle().getMotEnd()) ? motDateFormat.parse(createFormBean.getVehicle().getMotEnd()) : null);
+		vehicle.setWeight(!StringUtils.isEmpty(createFormBean.getVehicle().getWeight()) ? Integer.valueOf(createFormBean.getVehicle().getWeight()) : null);
 		
 		Owner owner = ownerService.getOwnerByBCN(createFormBean.getOwner().getBirthCertificateNumber());
 		if (owner == null) {
@@ -224,7 +231,8 @@ public class CreateController extends BaseController {
 			
 			List<SearchResultFormBean> searchResultList = new ArrayList<SearchResultFormBean>();
 			for (Vehicle vehicleOfOwner : owner.getVehicleList()) {
-				if (vehicleOfOwner.getId().longValue() == Long.valueOf(createFormBean.getOwner().getId()).longValue()) {	// aktualne zobrazovane vozidlo se v seznamu nezobrazuje
+				if (!StringUtils.isEmpty(createFormBean.getVehicle().getId()) && 
+						vehicleOfOwner.getId().longValue() == Long.valueOf(createFormBean.getVehicle().getId()).longValue()) {	// aktualne zobrazovane vozidlo se v seznamu nezobrazuje
 					continue;
 				}
 				
@@ -232,7 +240,7 @@ public class CreateController extends BaseController {
 				searchResult.setId(String.valueOf(vehicleOfOwner.getId()));
 				searchResult.setVehicleType(vehicleOfOwner.getVehicleType());
 				searchResult.setPlateNumber(vehicleOfOwner.getPlateNumber());
-				searchResult.setBrandAndModel((vehicleOfOwner.getBrand() != null ? vehicleOfOwner.getBrand().getValue() : vehicleOfOwner.getOtherBrandName()) + " " + vehicleOfOwner.getModel());
+				searchResult.setBrandAndModel(Helper.getBrandOfVehicle(vehicleOfOwner) + " " + vehicleOfOwner.getModel());
 				searchResult.setMakingYear(String.valueOf(vehicleOfOwner.getMakingYear()));
 				searchResult.setMotEnd(vehicleOfOwner.getMotEnd() != null ? motDateFormat.format(vehicleOfOwner.getMotEnd()) : "");
 				

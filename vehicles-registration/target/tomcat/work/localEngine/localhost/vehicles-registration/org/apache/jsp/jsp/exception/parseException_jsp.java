@@ -1,11 +1,11 @@
-package org.apache.jsp.jsp;
+package org.apache.jsp.jsp.exception;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import org.preznicek.vehiclesregistration.utils.Constants;
 
-public final class bugs_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class parseException_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -14,8 +14,10 @@ public final class bugs_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList(1);
-    _jspx_dependants.add("/jsp/taglibs.jsp");
+    _jspx_dependants.add("/jsp/exception/../taglibs.jsp");
   }
+
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -25,11 +27,13 @@ public final class bugs_jsp extends org.apache.jasper.runtime.HttpJspBase
   }
 
   public void _jspInit() {
+    _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
 
   public void _jspDestroy() {
+    _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -66,11 +70,10 @@ public final class bugs_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<ol>\r\n");
-      out.write("\t<li>komentare a dokumentace</li>\r\n");
-      out.write("\t<li>zkusit vyuzit dependency injection pri vytvareni objektu Create*FormBean</li>\r\n");
-      out.write("\t<li>ajax</li>\r\n");
-      out.write("</ol>\r\n");
+      if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
+        return;
+      out.write('\r');
+      out.write('\n');
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;
@@ -81,5 +84,32 @@ public final class bugs_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_spring_005fmessage_005f0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  spring:message
+    org.springframework.web.servlet.tags.MessageTag _jspx_th_spring_005fmessage_005f0 = (org.springframework.web.servlet.tags.MessageTag) _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.get(org.springframework.web.servlet.tags.MessageTag.class);
+    _jspx_th_spring_005fmessage_005f0.setPageContext(_jspx_page_context);
+    _jspx_th_spring_005fmessage_005f0.setParent(null);
+    // /jsp/exception/parseException.jsp(3,0) name = code type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_spring_005fmessage_005f0.setCode("error.parse");
+    int[] _jspx_push_body_count_spring_005fmessage_005f0 = new int[] { 0 };
+    try {
+      int _jspx_eval_spring_005fmessage_005f0 = _jspx_th_spring_005fmessage_005f0.doStartTag();
+      if (_jspx_th_spring_005fmessage_005f0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_spring_005fmessage_005f0[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_spring_005fmessage_005f0.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_spring_005fmessage_005f0.doFinally();
+      _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.reuse(_jspx_th_spring_005fmessage_005f0);
+    }
+    return false;
   }
 }

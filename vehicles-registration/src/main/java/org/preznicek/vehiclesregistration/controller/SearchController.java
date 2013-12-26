@@ -68,9 +68,9 @@ public class SearchController extends PageableController {
 			searchResult.setId(String.valueOf(vehicle.getId()));
 			searchResult.setVehicleType(vehicle.getVehicleType());
 			searchResult.setPlateNumber(vehicle.getPlateNumber());
-			searchResult.setBrandAndModel((vehicle.getBrand().getValue() != null ? vehicle.getBrand().getValue() : vehicle.getOtherBrandName()) + " " + vehicle.getModel());
+			searchResult.setBrandAndModel(vehicle.getOtherBrandName() + " " + vehicle.getModel());
 			searchResult.setMakingYear(String.valueOf(vehicle.getMakingYear()));
-			searchResult.setMotEnd(motDateFormat.format(vehicle.getMotEnd()));
+			searchResult.setMotEnd(vehicle.getMotEnd() != null ? motDateFormat.format(vehicle.getMotEnd()) : "");
 			searchResult.setOwner(vehicle.getOwner().getFirstname() + " " + vehicle.getOwner().getLastname());
 			
 			searchResultList.add(searchResult);

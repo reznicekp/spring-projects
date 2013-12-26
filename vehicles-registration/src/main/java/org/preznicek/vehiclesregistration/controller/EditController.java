@@ -24,6 +24,7 @@ import org.preznicek.vehiclesregistration.model.formbean.OwnerFormBean;
 import org.preznicek.vehiclesregistration.model.formbean.SearchResultFormBean;
 import org.preznicek.vehiclesregistration.model.formbean.TruckFormBean;
 import org.preznicek.vehiclesregistration.model.formbean.VehicleFormBean;
+import org.preznicek.vehiclesregistration.utils.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,6 +51,7 @@ public class EditController extends BaseController {
 		carFormBean.setFuel(String.valueOf(car.getFuel().getCode()));
 		
 		createFormBean.setCar(carFormBean);
+		createFormBean.getVehicle().setBrand(car.getBrand() != null ? String.valueOf(car.getBrand().getCode()) : "");
 		
 		return new ModelAndView("createCarTile", "createFormBean", createFormBean);
 	}
@@ -65,6 +67,7 @@ public class EditController extends BaseController {
 		motorcycleFormBean.setVolume(String.valueOf(motorcycle.getVolume()));
 		
 		createFormBean.setMotorcycle(motorcycleFormBean);
+		createFormBean.getVehicle().setBrand(motorcycle.getBrand() != null ? String.valueOf(motorcycle.getBrand().getCode()) : "");
 		
 		return new ModelAndView("createMotorcycleTile", "createFormBean", createFormBean);
 	}
@@ -81,6 +84,7 @@ public class EditController extends BaseController {
 		truckFormBean.setBodywork(String.valueOf(truck.getBodywork().getCode()));
 		
 		createFormBean.setTruck(truckFormBean);
+		createFormBean.getVehicle().setBrand(truck.getBrand() != null ? String.valueOf(truck.getBrand().getCode()) : "");
 		
 		return new ModelAndView("createTruckTile", "createFormBean", createFormBean);
 	}
@@ -98,6 +102,7 @@ public class EditController extends BaseController {
 		busFormBean.setVolume(String.valueOf(bus.getVolume()));
 		
 		createFormBean.setBus(busFormBean);
+		createFormBean.getVehicle().setBrand(bus.getBrand() != null ? String.valueOf(bus.getBrand().getCode()) : "");
 		
 		return new ModelAndView("createBusTile", "createFormBean", createFormBean);
 	}
@@ -106,7 +111,6 @@ public class EditController extends BaseController {
 		VehicleFormBean vehicleFormBean = new VehicleFormBean();
 		vehicleFormBean.setId(String.valueOf(vehicle.getId()));
 		vehicleFormBean.setPlateNumber(vehicle.getPlateNumber());
-		vehicleFormBean.setBrand(vehicle.getBrand() != null ? String.valueOf(vehicle.getBrand().getCode()) : "");
 		vehicleFormBean.setOtherBrandName(vehicle.getOtherBrandName());
 		vehicleFormBean.setModel(vehicle.getModel());
 		vehicleFormBean.setMakingYear(String.valueOf(vehicle.getMakingYear()));
@@ -132,7 +136,7 @@ public class EditController extends BaseController {
 			searchResult.setId(String.valueOf(vehicleOfOwner.getId()));
 			searchResult.setVehicleType(vehicleOfOwner.getVehicleType());
 			searchResult.setPlateNumber(vehicleOfOwner.getPlateNumber());
-			searchResult.setBrandAndModel((vehicleOfOwner.getBrand() != null ? vehicleOfOwner.getBrand().getValue() : vehicleOfOwner.getOtherBrandName()) + " " + vehicleOfOwner.getModel());
+			searchResult.setBrandAndModel(Helper.getBrandOfVehicle(vehicleOfOwner) + " " + vehicleOfOwner.getModel());
 			searchResult.setMakingYear(String.valueOf(vehicleOfOwner.getMakingYear()));
 			searchResult.setMotEnd(vehicleOfOwner.getMotEnd() != null ? motDateFormat.format(vehicleOfOwner.getMotEnd()) : "");
 			

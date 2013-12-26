@@ -7,11 +7,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.preznicek.vehiclesregistration.database.domain.codetable.BodyworkBusCT;
+import org.preznicek.vehiclesregistration.database.domain.codetable.BrandBusCT;
 
 @Entity
 @Table(name="vehicle_bus")
 public class Bus extends Vehicle {
 
+	@ManyToOne(fetch=FetchType.EAGER, optional=true)
+	private BrandBusCT brand;
+	
 	@ManyToOne(fetch=FetchType.EAGER, optional=false)
 	private BodyworkBusCT bodywork;
 	
@@ -25,6 +29,12 @@ public class Bus extends Vehicle {
 	
 	
 	
+	public BrandBusCT getBrand() {
+		return brand;
+	}
+	public void setBrand(BrandBusCT brand) {
+		this.brand = brand;
+	}
 	public BodyworkBusCT getBodywork() {
 		return bodywork;
 	}
