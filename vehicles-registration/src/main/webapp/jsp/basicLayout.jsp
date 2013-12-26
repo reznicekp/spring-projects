@@ -3,8 +3,7 @@
 
 <c:set var="pageSize" value="<%= Constants.PAGE_SIZE %>" scope="request"/>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 
 <html>
     <head>
@@ -19,16 +18,16 @@
     </head>
     
     <body>
-    	<div id="header">
+    	<header>
     		<div id="titles">
 				<h1><spring:message code="appName"/></h1>
 				<h2><spring:message code="${title}"/></h2>
 			</div>
-    	</div>
+    	</header>
     	
     	<br class="clear">
     	
-    	<div id="menu">
+    	<nav>
     		<ul>
     			<li><a href="<%= request.getContextPath() %>/search"><spring:message code="menu.search"/></a></li>
     			<li>
@@ -42,14 +41,14 @@
     			</li>
     			<li><a href="<%= request.getContextPath() %>/bugs"><spring:message code="menu.bugs"/></a></li>
     		</ul>
-    	</div>
+    	</nav>
     	
-    	<div id="content">
+    	<article>
     		<tiles:insertAttribute name="content"/>
-    	</div>
+    	</article>
     	
-    	<div id="footer">
+    	<footer>
     		<p>Copyright 2013 &#169; Pavel Reznicek. All rights reserved.</p>
-    	</div>
+    	</footer>
     </body>
 </html>
