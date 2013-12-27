@@ -7,8 +7,9 @@
 	<form:errors path="otherBrandName" cssClass="error"/>
 	<br>
 	<form:label path="model" cssErrorClass="error"><spring:message code="model"/> *</form:label>
-	<form:input path="model" cssErrorClass="error"/>
+	<form:input path="model" cssErrorClass="error" list="models"/>
 	<form:errors path="model" cssClass="error"/>
+	<datalist id="models"></datalist><!-- pro hodnoty naseptavace dotazene ajaxem -->
 	<br>
 	<form:label path="makingYear" cssErrorClass="error"><spring:message code="makingYear"/> *</form:label>
 	<form:input path="makingYear" cssErrorClass="error"/>

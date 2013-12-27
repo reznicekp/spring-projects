@@ -8,7 +8,7 @@
 		
 		<spring:nestedPath path="vehicle">
 			<form:label path="brand" cssErrorClass="error"><spring:message code="brand"/> *</form:label>
-			<form:select path="brand" cssErrorClass="error">
+			<form:select path="brand" cssErrorClass="error" onchange="getModels()">
 				<form:option value="" label="---"/>
 				<form:options items="${brandTruck}" itemLabel="value" itemValue="code"/>
 			</form:select>

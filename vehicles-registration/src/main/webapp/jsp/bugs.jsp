@@ -2,5 +2,4 @@
 
 <ol>
 	<li>zkusit vyuzit dependency injection pri vytvareni objektu Create*FormBean</li>
-	<li>ajax</li>
 </ol>

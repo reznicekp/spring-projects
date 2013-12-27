@@ -5,6 +5,7 @@ import java.util.List;
 import org.preznicek.vehiclesregistration.CodeTableHolder;
 import org.preznicek.vehiclesregistration.database.dao.CodeTableDao;
 import org.preznicek.vehiclesregistration.database.domain.codetable.CodeTable;
+import org.preznicek.vehiclesregistration.database.domain.codetable.ModelCT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,7 @@ public class CodeTableService {
 	 * @param codeTableClass	Trida urcujici ciselnik.
 	 * @return					Data ciselniku.
 	 */
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<? extends CodeTable> getCodeTableData(Class<? extends CodeTable> codeTableClass) {
 		List<? extends CodeTable> codeTableData = codeTableHolder.getCodeTableData(codeTableClass);
 		
@@ -60,5 +61,15 @@ public class CodeTableService {
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * Zavola DAO pro ziskani modelu dane znacky.
+	 * @param brandCode		Kod znacky.
+	 * @return
+	 */
+	@Transactional(readOnly=true)
+	public List<ModelCT> getModelListByBrand(Integer brandCode) {
+		return codeTableDao.getModelListByBrand(brandCode);
 	}
 }

@@ -21,11 +21,12 @@ public final class createCar_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fspring_005fnestedPath_0026_005fpath;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005flabel_0026_005fpath_005fcssErrorClass;
-  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fonchange_005fcssErrorClass;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005foption_0026_005fvalue_005flabel_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005foptions_0026_005fitems_005fitemValue_005fitemLabel_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005ferrors_0026_005fpath_005fcssClass_005fnobody;
   private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fcssErrorClass_005fnobody;
+  private org.apache.jasper.runtime.TagHandlerPool _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass;
 
   private javax.el.ExpressionFactory _el_expressionfactory;
   private org.apache.AnnotationProcessor _jsp_annotationprocessor;
@@ -39,11 +40,12 @@ public final class createCar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fspring_005fnestedPath_0026_005fpath = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005flabel_0026_005fpath_005fcssErrorClass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
-    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fonchange_005fcssErrorClass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005foption_0026_005fvalue_005flabel_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005foptions_0026_005fitems_005fitemValue_005fitemLabel_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005ferrors_0026_005fpath_005fcssClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fcssErrorClass_005fnobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _el_expressionfactory = _jspxFactory.getJspApplicationContext(getServletConfig().getServletContext()).getExpressionFactory();
     _jsp_annotationprocessor = (org.apache.AnnotationProcessor) getServletConfig().getServletContext().getAttribute(org.apache.AnnotationProcessor.class.getName());
   }
@@ -53,11 +55,12 @@ public final class createCar_jsp extends org.apache.jasper.runtime.HttpJspBase
     _005fjspx_005ftagPool_005fspring_005fmessage_0026_005fcode_005fnobody.release();
     _005fjspx_005ftagPool_005fspring_005fnestedPath_0026_005fpath.release();
     _005fjspx_005ftagPool_005fform_005flabel_0026_005fpath_005fcssErrorClass.release();
-    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass.release();
+    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fonchange_005fcssErrorClass.release();
     _005fjspx_005ftagPool_005fform_005foption_0026_005fvalue_005flabel_005fnobody.release();
     _005fjspx_005ftagPool_005fform_005foptions_0026_005fitems_005fitemValue_005fitemLabel_005fnobody.release();
     _005fjspx_005ftagPool_005fform_005ferrors_0026_005fpath_005fcssClass_005fnobody.release();
     _005fjspx_005ftagPool_005fform_005finput_0026_005fpath_005fcssErrorClass_005fnobody.release();
+    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -142,13 +145,15 @@ public final class createCar_jsp extends org.apache.jasper.runtime.HttpJspBase
                   out.write("\r\n");
                   out.write("\t\t\t");
                   //  form:select
-                  org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_005fselect_005f0 = (org.springframework.web.servlet.tags.form.SelectTag) _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass.get(org.springframework.web.servlet.tags.form.SelectTag.class);
+                  org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_005fselect_005f0 = (org.springframework.web.servlet.tags.form.SelectTag) _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fonchange_005fcssErrorClass.get(org.springframework.web.servlet.tags.form.SelectTag.class);
                   _jspx_th_form_005fselect_005f0.setPageContext(_jspx_page_context);
                   _jspx_th_form_005fselect_005f0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_spring_005fnestedPath_005f0);
                   // /jsp/createCar.jsp(11,3) name = path type = null reqTime = true required = true fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
                   _jspx_th_form_005fselect_005f0.setPath("brand");
                   // /jsp/createCar.jsp(11,3) name = cssErrorClass type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
                   _jspx_th_form_005fselect_005f0.setCssErrorClass("error");
+                  // /jsp/createCar.jsp(11,3) name = onchange type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+                  _jspx_th_form_005fselect_005f0.setOnchange("getModels()");
                   int[] _jspx_push_body_count_form_005fselect_005f0 = new int[] { 0 };
                   try {
                     int _jspx_eval_form_005fselect_005f0 = _jspx_th_form_005fselect_005f0.doStartTag();
@@ -198,7 +203,7 @@ public final class createCar_jsp extends org.apache.jasper.runtime.HttpJspBase
                     _jspx_th_form_005fselect_005f0.doCatch(_jspx_exception);
                   } finally {
                     _jspx_th_form_005fselect_005f0.doFinally();
-                    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fcssErrorClass.reuse(_jspx_th_form_005fselect_005f0);
+                    _005fjspx_005ftagPool_005fform_005fselect_0026_005fpath_005fonchange_005fcssErrorClass.reuse(_jspx_th_form_005fselect_005f0);
                   }
                   out.write("\r\n");
                   out.write("\t\t\t");

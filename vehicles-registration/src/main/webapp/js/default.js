@@ -1,5 +1,6 @@
 jQuery(document).ready(function() {
 	setCheckbox();
+	getModels();
 });
 
 /**
@@ -12,5 +13,31 @@ function setCheckbox() {
 		jQuery('#searchVehicleFormBean\\.onlyActiveInsurance1').attr('disabled', true);
 	} else {
 		jQuery('#searchVehicleFormBean\\.onlyActiveInsurance1').removeAttr('disabled');
+	}
+}
+
+/**
+ * Ajaxove volani pro ziskani vsech modelu dane znacky. Pri uspesnem vykonani volani databaze a vraceni 
+ * seznamu modelu se soucasne modely odstrani a nahradi se novymi (aktualnimi pro vybranou znacku).
+ */
+function getModels() {
+	var brandCode = jQuery('#vehicle\\.brand').val();
+	
+	if (brandCode > 0) {
+		jQuery.ajaxSetup({
+			url: '/vehicles-registration/get-models',
+			type: 'get',
+			data: {'brandCode' : brandCode},
+			timeout: 20000,
+			success: function(result) {
+				jQuery('#models option').remove();
+				jQuery('#models').append(result);
+			},
+			error: function(e) {
+				alert('Error during getting list of models! Try to type model by hand.\n' + e.status + ' - ' + e.statusText);
+			}
+		});
+		
+		jQuery.ajax();
 	}
 }
