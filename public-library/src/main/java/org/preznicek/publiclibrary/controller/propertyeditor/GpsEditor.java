@@ -11,7 +11,7 @@ public class GpsEditor extends PropertyEditorSupport {
 	@Override
 	public String getAsText() {
 		String text = super.getAsText();
-		if ("null".equals(text)) {
+		if (text == null || "null".equals(text)) {
 			text = "";
 		}
 		return text.replaceAll(",", ".");
