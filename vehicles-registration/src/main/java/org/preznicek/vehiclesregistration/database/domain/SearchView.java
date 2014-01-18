@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * View:
 create or replace view vw_search as 
 select distinct 
-	veh.id vehicle_id, veh.vehicle_type, veh.plate_number vehicle_plate_number, ifnull(ifnull(ctb.value, ifnull(ctc.value, ifnull(ctm.value, ctt.value))), veh.other_brand_name) vehicle_brand, veh.model vehicle_model, veh.making_year vehicle_making_year, veh.mot_end vehicle_mot_end, own.firstname owner_firstname, own.lastname owner_lastname, ins.active_from insurance_active_from, ins.active_to insurance_active_to, ifnull(com.value, ins.other_insurance_company_name) insurance_company 
+	veh.id vehicle_id, veh.vehicle_type, veh.plate_number vehicle_plate_number, ifnull(ifnull(ctb.value, ifnull(ctc.value, ifnull(ctm.value, ctt.value))), veh.other_brand_name) vehicle_brand, veh.model vehicle_model, veh.making_year vehicle_making_year, veh.mot_end vehicle_mot_end, own.firstname owner_firstname, own.lastname owner_lastname, own.birth_certificate_number owner_birth_certificate_number, ins.active_from insurance_active_from, ins.active_to insurance_active_to, ifnull(com.value, ins.other_insurance_company_name) insurance_company 
 from Vehicle veh 
 	left outer join vehicle_bus bus on veh.id=bus.id 
 	left outer join vehicle_car car on veh.id=car.id 
