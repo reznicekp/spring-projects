@@ -19,8 +19,8 @@ public class HomeController {
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public ModelAndView home() {
 		LoginFormBean loginFormBean = new LoginFormBean();
-//		loginFormBean.setEmail("@");
-		loginFormBean.setEmail("jnovak@seznam.cz");
+		loginFormBean.setEmail("@");
+//		loginFormBean.setEmail("jnovak@seznam.cz");
 		
 		return new ModelAndView("home", "loginFormBean", loginFormBean);
 	}
